@@ -5,7 +5,7 @@
  */
 package PAD.Main;
 
-import PAD.interfaceKit.KitController;
+import PAD.interfaceKit.KitConnector;
 
 /**
  *
@@ -13,15 +13,12 @@ import PAD.interfaceKit.KitController;
  */
 public class Main {
 
-    static boolean magneet = true;
-    private static KitController controller = new KitController();
-
     /**
      * @param args the command line arguments
      * @throws java.lang.Exception
      */
     public static void main(String[] args) throws Exception {
         // TODO code application logic here
-        controller.start();
+        KitConnector.initialize();
     }
 }

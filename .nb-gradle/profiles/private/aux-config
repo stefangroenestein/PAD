@@ -5,14 +5,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
       <group>
-        <file>file:/Users/stefangroenestein/NetBeansProjects/PAD/src/main/java/phidgetspad/PhidgetsPad.java</file>
-        <file>file:/Users/stefangroenestein/NetBeansProjects/PAD/src/main/java/phidgetspad/KitConnector.java</file>
+        <file>file:/Users/stefangroenestein/NetBeansProjects/PAD/src/main/java/PAD/interfaceKit/output/Output.java</file>
+        <file>file:/Users/stefangroenestein/NetBeansProjects/PAD/src/main/java/PAD/interfaceKit/SetOutput.java</file>
+        <file>file:/Users/stefangroenestein/NetBeansProjects/PAD/src/main/java/PAD/interfaceKit/KitController.java</file>
       </group>
     </open-files>
     <editor-bookmarks lastBookmarkId="0" xmlns="http://www.netbeans.org/ns/editor-bookmarks/2"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
       <group>
-        <file>file:/Users/stefangroenestein/NetBeansProjects/PAD/src/main/java/PAD/Main/Main.java</file>
+        <file>file:/Users/stefangroenestein/NetBeansProjects/PAD/src/main/java/PAD/interfaceKit/output/Output.java</file>
+        <file>file:/Users/stefangroenestein/NetBeansProjects/PAD/src/main/java/PAD/interfaceKit/SetOutput.java</file>
+        <file>file:/Users/stefangroenestein/NetBeansProjects/PAD/src/main/java/PAD/interfaceKit/KitController.java</file>
       </group>
     </open-files>
   </auxiliary>

@@ -6,12 +6,16 @@
 package PAD.Main;
 
 import PAD.interfaceKit.KitConnector;
+import PAD.interfaceKit.KitController;
 
 /**
  *
+ * @author Youri Dudock
  * @author <Stefan Groenestein, IT102, 500726588>
  */
 public class Main {
+    
+    private static KitController controller = new KitController();
 
     /**
      * @param args the command line arguments
@@ -20,5 +24,9 @@ public class Main {
     public static void main(String[] args) throws Exception {
         // TODO code application logic here
         KitConnector.initialize();
+        controller.start();
+       
+        
+        
     }
 }

@@ -10,38 +10,36 @@ import com.phidgets.PhidgetException;
 
 /**
  *
+ * @author Youri Dudock
  * @author <Stefan Groenestein, IT102, 500726588>
  */
 public class KitConnector {
 
-    private static InterfaceKitPhidget kit;
-    private static final int WAIT_TIMER = 5000;
+    private static InterfaceKitPhidget kit; // a instance of your interface kit
+    
+    private static final int WAIT_TIMER = 5000; // the max amount of waiting time before disconnecting
 
-    public static InterfaceKitPhidget getKit() throws PhidgetException {
-        if (kit == null) {
-            kit = new InterfaceKitPhidget();
-        }
-
-        if (!kit.isAttached()) {
-            kitConnect();
-        }
-
+    public static InterfaceKitPhidget getKit() {
         return kit;
     }
 
     private static void kitConnect() {
         try {
             kit.openAny();
+            
             System.out.println("Waiting for InterfaceKit...");
+            
             kit.waitForAttachment(WAIT_TIMER);
+            
             System.out.println("InterfaceKit connected!");
-
         } catch (PhidgetException ex) {
             System.err.println("Unable to create InterfaceKit");
         }
     }
 
-    public static void initialize() {
+    public static void initialize() throws PhidgetException {
+        kit = new InterfaceKitPhidget();
+ 
         kitConnect();
     }
 }

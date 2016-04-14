@@ -5,7 +5,9 @@
  */
 package PAD.interfaceKit.io.input.button.impl;
 
+import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.ComponentAction;
+import PAD.interfaceKit.io.output.OutputComponent;
 
 /**
  *
@@ -16,6 +18,8 @@ public class GreenButtonAction implements ComponentAction {
     @Override
     public void trigger() {
         System.out.println("You have pressed the green button.");
+        
+        OutputComponent.setState(Component.MAGNET_ONE, false);
     }
     
 }

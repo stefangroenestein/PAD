@@ -21,7 +21,7 @@ public class PressurePlateComponent extends InputComponent {
     
     private final String PRESSURE_PLATE_PREFIX = "PRESSURE_PLATE_";
     
-    private final int SENSOR_TRIGGER_VALUE = 10;
+    private final int SENSOR_TRIGGER_VALUE = 1;
 
     @Override
     public String getPrefix() {

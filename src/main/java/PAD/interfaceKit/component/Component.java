@@ -7,6 +7,7 @@ package PAD.interfaceKit.component;
 
 import PAD.interfaceKit.io.input.button.impl.GreenButtonAction;
 import PAD.interfaceKit.io.input.pressure.impl.PressurePlateAction;
+import PAD.interfaceKit.io.output.magnet.MagnetAction;
 
 /**
  *
@@ -16,7 +17,9 @@ public enum Component {
     
     BUTTON_GREEN(0, new GreenButtonAction()),
     
-    PRESSURE_PLATE_ONE(1, new PressurePlateAction());
+    PRESSURE_PLATE_ONE(1, new PressurePlateAction()),
+    
+    MAGNET_ONE(6, new MagnetAction());
     
     private int id;
     

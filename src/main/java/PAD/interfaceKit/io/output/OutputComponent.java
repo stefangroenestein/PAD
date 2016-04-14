@@ -5,10 +5,37 @@
  */
 package PAD.interfaceKit.io.output;
 
+import PAD.interfaceKit.KitConnector;
+import PAD.interfaceKit.component.Component;
+import PAD.interfaceKit.component.ComponentQueue;
+import PAD.interfaceKit.component.QueuedComponent;
+import com.phidgets.PhidgetException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
- * @author Admin
+ * @author Youri Dudock
  */
 public class OutputComponent {
-    
+
+    public static void setState(Component component, boolean state) {
+        ComponentQueue.add(component, state);
+    }
+
+    public static void process() {
+        while (ComponentQueue.hasNext()) {
+            
+            try {
+                QueuedComponent queuedComponent = ComponentQueue.getNext();
+                KitConnector.getKit().setOutputState(queuedComponent.getComponent().getId(), queuedComponent.getState());
+                
+            } catch (PhidgetException ex) {
+                Logger.getLogger(OutputComponent.class.getName()).log(Level.SEVERE, null, ex);
+                continue;
+            }
+        }
+
+    }
+
 }

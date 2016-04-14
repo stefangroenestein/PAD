@@ -21,7 +21,7 @@ public class OutputHandler extends IOController {
     
     @Override
     public void onPulse() {
-        //control output
+        OutputComponent.process();
     }
     
 }

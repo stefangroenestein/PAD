@@ -7,17 +7,12 @@ package PAD.interfaceKit.io.output;
 
 import PAD.interfaceKit.KitConnector;
 import PAD.interfaceKit.io.IOController;
-import com.phidgets.PhidgetException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author Youri Dudock
  */
 public class OutputHandler extends IOController {
-    
-    //KitConnector.getKit().setOutputState(id, state);
     
     @Override
     public void onPulse() {

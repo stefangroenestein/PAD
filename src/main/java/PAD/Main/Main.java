@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PAD.Main;
+package PAD.main;
 
 import PAD.interfaceKit.KitConnector;
 import PAD.interfaceKit.KitController;
+import PAD.sound.Sound;
+import PAD.sound.Speaker;
 
 /**
  *
@@ -25,8 +27,6 @@ public class Main {
         // TODO code application logic here
         KitConnector.initialize();
         controller.start();
-       
-        
         
     }
 }

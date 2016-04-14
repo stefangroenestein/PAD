@@ -18,16 +18,12 @@ import java.util.logging.Logger;
  */
 public class KitController {
     
-
     private static boolean isRunning = true;
    
-
     public void control() throws InterruptedException, PhidgetException {
 
         while (isRunning) {
             IOController.in();
-            
-            
             
             IOController.out();
 

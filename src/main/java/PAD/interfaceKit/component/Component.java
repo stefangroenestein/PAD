@@ -6,6 +6,7 @@
 package PAD.interfaceKit.component;
 
 import PAD.interfaceKit.io.input.button.impl.GreenButtonAction;
+import PAD.interfaceKit.io.input.button.impl.WhiteButtonAction;
 import PAD.interfaceKit.io.input.pressure.impl.PressurePlateAction;
 import PAD.interfaceKit.io.output.magnet.MagnetAction;
 

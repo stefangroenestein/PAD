@@ -1,0 +1,53 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 19-apr-2016, 10:20:17
+    Author     : max
+*/
+.backgroundColor
+{
+    -fx-background-color:       #17024F;
+
+}
+
+.tab-header-area {
+	-fx-padding: 0;
+}
+/*background tab color*/
+.tab-header-background {
+	-fx-background-color: orange;
+}
+
+/*tab color and layout*/
+.tab {
+	-fx-padding: 12px;
+	-fx-background-color: orange;
+	-fx-border-radius: 0;
+    -fx-background-radius: 0;
+}
+
+/*selected colors */
+.tab:selected {
+	-fx-accent: #FF4000;
+	-fx-focus-color: #FF4000;
+	-fx-background-color: #FF4000;
+	-fx-border-width: 0; 
+	-fx-border-radius: 0;
+	-fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+
+Button {
+	-fx-font-size: 14px;
+	-fx-text-fill: white;
+	-fx-padding: 10px;
+	-fx-background-color: orange;
+}
+Button:focused {
+	-fx-background-color: #FF4000;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5, 4, 3;
+}

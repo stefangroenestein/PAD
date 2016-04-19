@@ -5,6 +5,7 @@
  */
 package PAD.interfaceKit;
 
+import PAD.game.GameHandler;
 import PAD.interfaceKit.io.IOController;
 import PAD.interfaceKit.io.input.InputComponent;
 import com.phidgets.PhidgetException;
@@ -24,6 +25,8 @@ public class KitController {
 
         while (isRunning) {
             IOController.in();
+            
+            GameHandler.process();
             
             IOController.out();
 

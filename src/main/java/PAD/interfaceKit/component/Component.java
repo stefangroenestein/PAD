@@ -9,6 +9,7 @@ import PAD.interfaceKit.io.input.button.impl.GreenButtonAction;
 import PAD.interfaceKit.io.input.button.impl.WhiteButtonAction;
 import PAD.interfaceKit.io.input.pressure.impl.PressurePlateAction;
 import PAD.interfaceKit.io.output.magnet.MagnetAction;
+import java.util.ArrayList;
 
 /**
  *
@@ -33,6 +34,12 @@ public enum Component {
     
     public int getId() {
         return id;
+    }
+    
+    public ArrayList<Component> getMagnets() {
+        ArrayList<Component> components = new ArrayList();
+        
+      components.
     }
     
     public void doAction() {

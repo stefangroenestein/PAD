@@ -5,8 +5,7 @@
  */
 package PAD.game;
 
-import PAD.interfaceKit.component.Component;
-import java.util.ArrayList;
+import PAD.interfaceKit.component.LinkedComponent;
 
 /**
  *
@@ -16,24 +15,34 @@ public class Game {
     
     private GameMode mode; // the mode this game is in
     
-    private boolean isFinished = false;
+    private GameStage stage = GameStage.FINISHED;
     
-    private boolean hasStarted = false;
-    
-    public void initialize() {
-        hasStarted = true;
-    }
+    private LinkedComponent releasedPiston; // the piston which has been released
     
     public void setGameMode(GameMode mode) {
         this.mode = mode;
     }
     
-    public boolean isFinished() {
-        return isFinished;
+    public GameMode getMode() {
+        return mode;
     }
     
-    public boolean hasStarted() {
-        return hasStarted;
+    public GameStage getStage() {
+        return stage;
+    }
+    
+    public void setStage(GameStage stage) {
+        this.stage = stage;
+        
+        System.out.println("Game set to stage: " + stage.toString());
+    }
+    
+    public void setReleasedPiston(LinkedComponent component) {
+        this.releasedPiston = component;
+    }
+    
+    public LinkedComponent getReleasedPiston() {
+        return releasedPiston;
     }
     
     

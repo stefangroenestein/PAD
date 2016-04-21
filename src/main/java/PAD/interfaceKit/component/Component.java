@@ -36,11 +36,7 @@ public enum Component {
         return id;
     }
     
-    public ArrayList<Component> getMagnets() {
-        ArrayList<Component> components = new ArrayList();
-        
-      components.
-    }
+
     
     public void doAction() {
         action.trigger();

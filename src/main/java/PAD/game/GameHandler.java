@@ -5,38 +5,79 @@
  */
 package PAD.game;
 
+import PAD.game.mechanic.PistonMechanic;
+import PAD.interfaceKit.component.ComponentHandler;
+import PAD.interfaceKit.io.input.InputComponent;
+import PAD.interfaceKit.io.output.magnet.MagnetHandler;
+
 /**
+ * Handles a game and works as a base class for actual game modes
  *
  * @author Youri Dudock
  */
-public class GameHandler {
-    
-    private static Game game = new Game();
-    
+public abstract class GameHandler {
+
+    private static Game game = new Game(); // a game, static because their can only exists one
+
+    /**
+     * Starts a new game
+     *
+     * @param mode the game mode of this game
+     */
     public static void startGame(GameMode mode) {
-        if (game.isFinished()) {
-            game = new Game();
-            
-        } else if (!game.isFinished()) {
+        if (game.getStage().equals(GameStage.FINISHED)) { // check if there isnt a active game
+            game = new Game(); // create new
+
+        } else if (!game.getStage().equals(GameStage.FINISHED)) {
             System.out.println("There is already a active game being played..");
             return;
         }
-        
-        game.setGameMode(mode);
-        
-        game.initialize();
+
+        MagnetHandler.setMagnets(true); // turn the magnets on
+
+        game.setGameMode(mode); // sets the game mode for this game
+
+        game.setStage(GameStage.STARTING);
     }
-    
+
+    /**
+     * Proceses the game, this gets called every tick
+     */
     public static void process() {
-        if (!game.hasStarted() || game.isFinished()) {
-            return;
+        switch (game.getStage()) {
+
+            case STARTING:
+                if (PistonMechanic.arePistonsDown()) {
+                    System.out.println("Pistons are pressed down, moving to the next stage..");
+                    game.setStage(GameStage.RUNNING);
+                } else {
+                    System.out.println("Waiting for the pistons to be pressed down..");
+                }
+                break;
+                
+            case RUNNING:
+                if (game.getReleasedPiston() == null) { // first tick after everything has been pressed down
+                    PistonMechanic.releasePiston(ComponentHandler.getRandomLinkedComponent());
+                    return;
+                }
+                
+                if (InputComponent.getPressurePlateComponent().getState(game.getReleasedPiston().getPressurePlate())) {
+                    System.out.println("Right piston has been pressed down, releasing new..");
+                    
+                    PistonMechanic.releasePiston(ComponentHandler.getRandomLinkedComponent());
+                }
+                break;
+
         }
-        
-        
-        
-        
-        
-        
+
     }
     
+    /**
+     *
+     * @return the game in this handler
+     */
+    public static Game getGame() {
+        return game;
+    }
+
 }

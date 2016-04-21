@@ -5,6 +5,8 @@
  */
 package PAD.interfaceKit.io.input.button.impl;
 
+import PAD.game.GameHandler;
+import PAD.game.GameMode;
 import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.ComponentAction;
 import PAD.interfaceKit.io.output.OutputComponent;
@@ -19,7 +21,7 @@ public class GreenButtonAction implements ComponentAction {
     public void trigger() {
         System.out.println("You have pressed the green button.");
         
-        OutputComponent.setState(Component.MAGNET_ONE, false);
+        GameHandler.startGame(GameMode.NORMAL);
     }
     
 }

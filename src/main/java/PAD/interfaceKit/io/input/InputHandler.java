@@ -17,7 +17,7 @@ public class InputHandler extends IOController {
     @Override
     public void onPulse() {
         InputComponent.getButtonComponent().process();
-        InputComponent.getPressurePlateComponent().process();
+        //InputComponent.getPressurePlateComponent().process();
     }
     
     

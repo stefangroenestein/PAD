@@ -37,5 +37,6 @@ public class PressurePlateComponent extends InputComponent {
             return false;
         }
     }
+
     
 }

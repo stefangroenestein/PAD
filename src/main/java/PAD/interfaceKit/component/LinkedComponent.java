@@ -6,6 +6,7 @@
 package PAD.interfaceKit.component;
 
 /**
+ * Contains two components (a magnet and a pressure plate) which are linked which each other
  *
  * @author Youri Dudock
  */

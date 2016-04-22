@@ -7,39 +7,60 @@ package PAD.interfaceKit;
 
 import com.phidgets.InterfaceKitPhidget;
 import com.phidgets.PhidgetException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
+ * Deals with connecting the kit to our program
  *
  * @author Youri Dudock
  * @author <Stefan Groenestein, IT102, 500726588>
  */
 public class KitConnector {
 
-    private static InterfaceKitPhidget kit; // a instance of your interface kit
+    private static InterfaceKitPhidget kit; // a instance of the interface kit
     
     private static final int WAIT_TIMER = 5000; // the max amount of waiting time before disconnecting
 
-    public static InterfaceKitPhidget getKit() {
-        return kit;
-    }
-
-    private static void kitConnect() {
+    /**
+     * Tries to connect the kit to our application
+     */
+    private static void connect() {
         try {
-            kit.openAny();
+            kit.openAny(); // opens a connection with the kit
             
-            System.out.println("Waiting for InterfaceKit...");
+            System.out.println("Trying to connect the InterfaceKit... (Time out: " + WAIT_TIMER + ")");
             
-            kit.waitForAttachment(WAIT_TIMER);
+            kit.waitForAttachment(WAIT_TIMER); // setting a wait timer
             
-            System.out.println("InterfaceKit connected!");
+            System.out.println("InterfaceKit connected!"); // succes!
         } catch (PhidgetException ex) {
-            System.err.println("Unable to create InterfaceKit");
+            System.err.println("Time out! Unable to connect in time with the InterfaceKit.");
+            System.out.println("Attempting to reconnect..");
+            
+            initialize();
         }
     }
 
-    public static void initialize() throws PhidgetException {
-        kit = new InterfaceKitPhidget();
+    /**
+     * Creates a new kit instance and tries to connect it
+     */
+    public static void initialize() {
+        try {
+            kit = new InterfaceKitPhidget();
+        } catch (PhidgetException ex) {
+            Logger.getLogger(KitConnector.class.getName()).log(Level.SEVERE, null, ex);
+        }
  
-        kitConnect();
+        connect();
+    }
+    
+    
+    /**
+     * 
+     * @return a instance of our kit
+     */
+    public static InterfaceKitPhidget getKit() {
+        return kit;
     }
 }

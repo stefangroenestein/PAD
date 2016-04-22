@@ -8,13 +8,22 @@ package PAD.main.util;
 import java.util.Random;
 
 /**
+ * Contains function to handle random 
  *
- * @author Admin
+ * @author Youri Dudock
  */
 public class RandomUtil {
     
-    private static Random randomGenerator = new Random();
+    private static Random randomGenerator = new Random(); // a random instance, static for the whole program
     
+    /**
+     * A random int from 0 to x
+     * 
+     * @param max
+     *          the max range
+     * 
+     * @return a random int 
+     */
     public static int getRandomInt(int max) {
         return randomGenerator.nextInt(max);
     }

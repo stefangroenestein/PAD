@@ -6,7 +6,6 @@
 package PAD.main;
 
 import PAD.interfaceKit.KitConnector;
-import PAD.interfaceKit.KitController;
 import PAD.sound.Sound;
 import PAD.sound.Speaker;
 
@@ -17,7 +16,7 @@ import PAD.sound.Speaker;
  */
 public class Main {
     
-    private static KitController controller = new KitController();
+    private static Controller controller = new Controller();
 
     /**
      * @param args the command line arguments

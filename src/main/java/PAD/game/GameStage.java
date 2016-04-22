@@ -12,7 +12,7 @@ package PAD.game;
  */
 public enum GameStage {
     
-    STARTING,
+    WAITING_FOR_PISTON,
     RUNNING,
     ENDING,
     FINISHED;

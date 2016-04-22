@@ -32,12 +32,14 @@ public abstract class GameHandler {
             System.out.println("There is already a active game being played..");
             return;
         }
+        
+        PistonMechanic.getPistonsDown().clear();
 
         MagnetHandler.setMagnets(true); // turn the magnets on
 
         game.setGameMode(mode); // sets the game mode for this game
 
-        game.setStage(GameStage.STARTING);
+        game.setStage(GameStage.WAITING_FOR_PISTON);
     }
 
     /**
@@ -46,9 +48,11 @@ public abstract class GameHandler {
     public static void process() {
         switch (game.getStage()) {
 
-            case STARTING:
+            case WAITING_FOR_PISTON:
                 if (PistonMechanic.arePistonsDown()) {
                     System.out.println("Pistons are pressed down, moving to the next stage..");
+                    
+                    PistonMechanic.releasePiston(ComponentHandler.getRandomLinkedComponent());
                     game.setStage(GameStage.RUNNING);
                 } else {
                     System.out.println("Waiting for the pistons to be pressed down..");
@@ -56,16 +60,7 @@ public abstract class GameHandler {
                 break;
                 
             case RUNNING:
-                if (game.getReleasedPiston() == null) { // first tick after everything has been pressed down
-                    PistonMechanic.releasePiston(ComponentHandler.getRandomLinkedComponent());
-                    return;
-                }
-                
-                if (InputComponent.getPressurePlateComponent().getState(game.getReleasedPiston().getPressurePlate())) {
-                    System.out.println("Right piston has been pressed down, releasing new..");
-                    
-                    PistonMechanic.releasePiston(ComponentHandler.getRandomLinkedComponent());
-                }
+               
                 break;
 
         }

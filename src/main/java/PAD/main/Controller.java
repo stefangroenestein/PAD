@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PAD.interfaceKit;
+package PAD.main;
 
 import PAD.game.GameHandler;
 import PAD.interfaceKit.io.IOController;
@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  * @author Youri Dudock
  * @author <Stefan Groenestein, IT102, 500726588>
  */
-public class KitController {
+public class Controller {
     
     private static boolean isRunning = true;
    
@@ -42,10 +42,14 @@ public class KitController {
             control();
             
         } catch (InterruptedException ex) {
-            Logger.getLogger(KitController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         } catch (PhidgetException ex) {
-            Logger.getLogger(KitController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void stop() {
+        isRunning = false;
     }
 
 }

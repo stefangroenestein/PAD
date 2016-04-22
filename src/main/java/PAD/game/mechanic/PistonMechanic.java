@@ -10,37 +10,45 @@ import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.LinkedComponent;
 import PAD.interfaceKit.io.input.InputComponent;
 import PAD.interfaceKit.io.output.OutputComponent;
+import java.util.ArrayList;
 
 /**
+ * Contains mechanics for the pistons
  *
  * @author Youri Dudock
  */
 public class PistonMechanic {
     
+    private static ArrayList<Component> pistonsDown = new ArrayList(); // list with the pistons that are down
+    
+    private static final int TOTAL_PISTONS = InputComponent.getPressurePlateComponent().getComponents().size(); // total amount of pistons
+                                                                                                                // based on amount of pressure plates
+    
+    /**
+     * Releases the piston by turning off a magnet
+     * 
+     * @param linkedComponent 
+     *                       The linked component which contains the id of the magnet and the connected pressure plate
+     */
     public static void releasePiston(LinkedComponent linkedComponent) {
         OutputComponent.setState(linkedComponent.getMagnet(), false); // release the piston
         
-        GameHandler.getGame().setReleasedPiston(linkedComponent);
+        GameHandler.getGame().setReleasedPiston(linkedComponent); // sets the new released piston
         
         OutputComponent.setState(linkedComponent.getMagnet(), true); // turn the magnet back on so that the piston can be catched
     }
     
     public static boolean arePistonsDown() {
-        int pressurePlates = 0; // amount of pressure plates in the system
-        int activatedPlates = 0; // amount of activated plates
-
-        for (Component component : Component.values()) {
-
-            if (component.toString().startsWith(InputComponent.getPressurePlateComponent().getPrefix())) {
-                pressurePlates++;
-
-                if (InputComponent.getPressurePlateComponent().getState(component)) {
-                    activatedPlates++;
-                }
-            }
-        }
-
-        return activatedPlates == pressurePlates;
+        return TOTAL_PISTONS == pistonsDown.size();
     }
     
+    
+    /**
+     * 
+     * @return a list with pistons
+     */
+    public static ArrayList<Component> getPistonsDown() {
+        return pistonsDown;
+    }
+     
 }

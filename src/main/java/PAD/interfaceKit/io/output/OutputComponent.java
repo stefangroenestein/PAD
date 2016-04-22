@@ -32,7 +32,6 @@ public class OutputComponent {
                 
             } catch (PhidgetException ex) {
                 Logger.getLogger(OutputComponent.class.getName()).log(Level.SEVERE, null, ex);
-                continue;
             }
         }
 

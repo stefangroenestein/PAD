@@ -5,12 +5,13 @@
  */
 package PAD.interfaceKit.io.input.pressure.impl;
 
-import PAD.interfaceKit.component.Component;
+import PAD.game.GameHandler;
+import PAD.game.GameStage;
+import PAD.game.mechanic.PistonMechanic;
 import PAD.interfaceKit.component.ComponentAction;
-import PAD.interfaceKit.io.input.InputComponent;
+import PAD.interfaceKit.component.ComponentHandler;
+import PAD.interfaceKit.component.LinkedComponent;
 import PAD.interfaceKit.io.output.OutputComponent;
-import PAD.sound.Sound;
-import PAD.sound.Speaker;
 
 /**
  *
@@ -18,13 +19,34 @@ import PAD.sound.Speaker;
  */
 public class PressurePlateAction implements ComponentAction {
 
+    private LinkedComponent linkedComponent;
+
     @Override
     public void trigger() {
-        
-        System.out.println("Pressure plate is being triggered!");
+        System.out.println("A pressure plate is being triggered!");
 
-        OutputComponent.setState(Component.MAGNET_ONE, true);
-        
+        if (GameHandler.getGame().getStage().equals(GameStage.WAITING_FOR_PISTON)) { // if the game is waiting for the pistons to be pressed down
+
+            if (!PistonMechanic.getPistonsDown().contains(linkedComponent.getPressurePlate())) { // If this is a new entry
+                PistonMechanic.getPistonsDown().add(linkedComponent.getPressurePlate());
+            }
+        }
+
+        if (GameHandler.getGame().getReleasedPiston() == null) { // prevent nullpointer exception
+            return;
+        }
+
+        if (GameHandler.getGame().getReleasedPiston().equals(linkedComponent)) {
+            System.out.println("Right piston has been pressed down, releasing new..");
+            PistonMechanic.releasePiston(ComponentHandler.getRandomLinkedComponent());
+        } else {
+            System.out.println("Wrong piston has been pressed down.");
+        }
+
     }
-    
+
+    public PressurePlateAction(LinkedComponent linkedComponent) {
+        this.linkedComponent = linkedComponent;
+    }
+
 }

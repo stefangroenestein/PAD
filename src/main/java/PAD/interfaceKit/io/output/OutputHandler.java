@@ -5,8 +5,9 @@
  */
 package PAD.interfaceKit.io.output;
 
-import PAD.interfaceKit.KitConnector;
+import PAD.interfaceKit.component.ComponentHandler;
 import PAD.interfaceKit.io.IOController;
+import PAD.interfaceKit.io.IOType;
 
 /**
  *
@@ -15,8 +16,8 @@ import PAD.interfaceKit.io.IOController;
 public class OutputHandler extends IOController {
     
     @Override
-    public void onPulse() {
-        OutputComponent.process();
+    public void onPulse(IOType type) {
+        ComponentHandler.getMagnet().process(type);
     }
     
 }

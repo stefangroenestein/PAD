@@ -7,7 +7,7 @@ package PAD.interfaceKit.io.input.pressure;
 
 import PAD.interfaceKit.KitConnector;
 import PAD.interfaceKit.component.Component;
-import PAD.interfaceKit.io.input.InputComponent;
+import PAD.interfaceKit.component.ComponentHandler;
 import PAD.interfaceKit.io.input.button.ButtonComponent;
 import com.phidgets.PhidgetException;
 import java.util.logging.Level;
@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author Youri Dudock
  */
-public class PressurePlateComponent extends InputComponent {
+public class PressurePlateComponent extends ComponentHandler {
     
     private final String PRESSURE_PLATE_PREFIX = "PRESSURE_PLATE_";
     

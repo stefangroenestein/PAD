@@ -5,7 +5,7 @@
  */
 package PAD.interfaceKit.io;
 
-import PAD.interfaceKit.io.input.InputComponent;
+import PAD.interfaceKit.component.ComponentHandler;
 import PAD.interfaceKit.io.output.OutputHandler;
 import PAD.interfaceKit.io.input.InputHandler;
 import PAD.interfaceKit.io.input.button.ButtonComponent;
@@ -24,18 +24,18 @@ public abstract class IOController {
      * Sets a action to read input 
      */
     public static void in() {
-        inputHandler.onPulse();
+        inputHandler.onPulse(IOType.INPUT);
     }
     
     /**
      * Sets a action to output output
      */
     public static void out() {
-        outputHandler.onPulse();
+        outputHandler.onPulse(IOType.OUTPUT);
     }
     
     
-    public abstract void onPulse();
+    public abstract void onPulse(IOType type);
 
     
     

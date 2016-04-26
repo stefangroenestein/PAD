@@ -7,7 +7,7 @@ package PAD.interfaceKit.io.input.button;
 
 import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.KitConnector;
-import PAD.interfaceKit.io.input.InputComponent;
+import PAD.interfaceKit.component.ComponentHandler;
 import com.phidgets.PhidgetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
  *
  * @author Youri Dudock
  */
-public class ButtonComponent extends InputComponent {
+public class ButtonComponent extends ComponentHandler {
     
     private final String BUTTON_PREFIX = "BUTTON_";
     

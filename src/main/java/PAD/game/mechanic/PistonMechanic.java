@@ -8,8 +8,7 @@ package PAD.game.mechanic;
 import PAD.game.GameHandler;
 import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.LinkedComponent;
-import PAD.interfaceKit.io.input.InputComponent;
-import PAD.interfaceKit.io.output.OutputComponent;
+import PAD.interfaceKit.component.ComponentHandler;
 import java.util.ArrayList;
 
 /**
@@ -21,8 +20,7 @@ public class PistonMechanic {
     
     private static ArrayList<Component> pistonsDown = new ArrayList(); // list with the pistons that are down
     
-    private static final int TOTAL_PISTONS = InputComponent.getPressurePlateComponent().getComponents().size(); // total amount of pistons
-                                                                                                                // based on amount of pressure plates
+    private static final int TOTAL_PISTONS = ComponentHandler.getMagnet().getComponents().size(); // total amount of pistons based on amount of magnets
     
     /**
      * Releases the piston by turning off a magnet
@@ -31,11 +29,11 @@ public class PistonMechanic {
      *                       The linked component which contains the id of the magnet and the connected pressure plate
      */
     public static void releasePiston(LinkedComponent linkedComponent) {
-        OutputComponent.setState(linkedComponent.getMagnet(), false); // release the piston
+        ComponentHandler.setState(linkedComponent.getMagnet(), false); // release the piston
         
         GameHandler.getGame().setReleasedPiston(linkedComponent); // sets the new released piston
         
-        OutputComponent.setState(linkedComponent.getMagnet(), true); // turn the magnet back on so that the piston can be catched
+        ComponentHandler.setState(linkedComponent.getMagnet(), true); // turn the magnet back on so that the piston can be catched
     }
     
     public static boolean arePistonsDown() {

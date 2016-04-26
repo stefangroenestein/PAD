@@ -5,8 +5,9 @@
  */
 package PAD.interfaceKit.io.input;
 
-import PAD.interfaceKit.component.Component;
+import PAD.interfaceKit.component.ComponentHandler;
 import PAD.interfaceKit.io.IOController;
+import PAD.interfaceKit.io.IOType;
 
 /**
  *
@@ -15,9 +16,9 @@ import PAD.interfaceKit.io.IOController;
 public class InputHandler extends IOController {
     
     @Override
-    public void onPulse() {
-        InputComponent.getButtonComponent().process();
-        InputComponent.getPressurePlateComponent().process();
+    public void onPulse(IOType type) {
+        ComponentHandler.getButton().process(type);
+        ComponentHandler.getPressurePlate().process(type);
     }
     
     

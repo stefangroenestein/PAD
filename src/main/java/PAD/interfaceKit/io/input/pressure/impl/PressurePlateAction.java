@@ -11,7 +11,6 @@ import PAD.game.mechanic.PistonMechanic;
 import PAD.interfaceKit.component.ComponentAction;
 import PAD.interfaceKit.component.ComponentHandler;
 import PAD.interfaceKit.component.LinkedComponent;
-import PAD.interfaceKit.io.output.OutputComponent;
 
 /**
  *
@@ -32,15 +31,20 @@ public class PressurePlateAction implements ComponentAction {
             }
         }
 
-        if (GameHandler.getGame().getReleasedPiston() == null) { // prevent nullpointer exception
-            return;
-        }
+        if (GameHandler.getGame().getStage().equals(GameStage.RUNNING)) {
 
-        if (GameHandler.getGame().getReleasedPiston().equals(linkedComponent)) {
-            System.out.println("Right piston has been pressed down, releasing new..");
-            PistonMechanic.releasePiston(ComponentHandler.getRandomLinkedComponent());
-        } else {
-            System.out.println("Wrong piston has been pressed down.");
+            if (GameHandler.getGame().getReleasedPiston() == null) { // prevent nullpointer exception
+                return;
+            }
+
+            if (GameHandler.getGame().getReleasedPiston().equals(linkedComponent)) {
+                System.out.println("Right piston has been pressed down, releasing new..");
+
+                PistonMechanic.releasePiston(ComponentHandler.getRandomLinkedComponent());
+            } else {
+                System.out.println("Wrong piston has been pressed down.");
+            }
+
         }
 
     }

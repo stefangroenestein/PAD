@@ -7,7 +7,7 @@ package PAD.main;
 
 import PAD.game.GameHandler;
 import PAD.interfaceKit.io.IOController;
-import PAD.interfaceKit.io.input.InputComponent;
+import PAD.interfaceKit.component.ComponentHandler;
 import com.phidgets.PhidgetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,7 +38,7 @@ public class Controller {
     public void start() {
         try {
  
-            InputComponent.initialize();
+            ComponentHandler.initialize();         
             control();
             
         } catch (InterruptedException ex) {

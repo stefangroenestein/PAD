@@ -5,9 +5,12 @@
  */
 package PAD.interfaceKit.component;
 
+import PAD.interfaceKit.io.input.button.ButtonComponent;
 import PAD.interfaceKit.io.input.button.impl.GreenButtonAction;
+import PAD.interfaceKit.io.input.pressure.PressurePlateComponent;
 import PAD.interfaceKit.io.input.pressure.impl.PressurePlateAction;
 import PAD.interfaceKit.io.output.magnet.MagnetAction;
+import PAD.interfaceKit.io.output.magnet.MagnetComponent;
 
 /**
  *
@@ -25,6 +28,7 @@ public enum Component {
     
     private ComponentAction action;
     
+    
     private Component(int id, ComponentAction action) {
         this.id = id;
         this.action = action;
@@ -33,9 +37,7 @@ public enum Component {
     public int getId() {
         return id;
     }
-    
 
-    
     public void doAction() {
         action.trigger();
     }

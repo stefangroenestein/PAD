@@ -7,9 +7,7 @@ package PAD.interfaceKit.io.input.button.impl;
 
 import PAD.game.GameHandler;
 import PAD.game.GameMode;
-import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.ComponentAction;
-import PAD.interfaceKit.io.output.OutputComponent;
 
 /**
  *

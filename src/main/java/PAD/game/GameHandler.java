@@ -7,8 +7,6 @@ package PAD.game;
 
 import PAD.game.mechanic.PistonMechanic;
 import PAD.interfaceKit.component.ComponentHandler;
-import PAD.interfaceKit.io.input.InputComponent;
-import PAD.interfaceKit.io.output.magnet.MagnetHandler;
 
 /**
  * Handles a game and works as a base class for actual game modes
@@ -33,9 +31,9 @@ public abstract class GameHandler {
             return;
         }
         
-        PistonMechanic.getPistonsDown().clear();
-
-        MagnetHandler.setMagnets(true); // turn the magnets on
+        PistonMechanic.getPistonsDown().clear(); // clean list for our pistonAreDown checker
+        
+        ComponentHandler.getMagnet().setMagnets(true);
 
         game.setGameMode(mode); // sets the game mode for this game
 

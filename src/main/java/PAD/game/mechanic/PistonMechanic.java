@@ -9,6 +9,9 @@ import PAD.game.GameHandler;
 import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.LinkedComponent;
 import PAD.interfaceKit.component.ComponentHandler;
+import PAD.main.task.TaskManager;
+import PAD.main.task.tasks.CancelBlockedStateTask;
+import PAD.main.task.tasks.ChangeMagnetStateTask;
 import java.util.ArrayList;
 
 /**
@@ -22,6 +25,8 @@ public class PistonMechanic {
     
     private static final int TOTAL_PISTONS = ComponentHandler.getMagnet().getComponents().size(); // total amount of pistons based on amount of magnets
     
+    private static boolean isReleaseBlocked = false;
+    
     /**
      * Releases the piston by turning off a magnet
      * 
@@ -29,14 +34,18 @@ public class PistonMechanic {
      *                       The linked component which contains the id of the magnet and the connected pressure plate
      */
     public static void releasePiston(LinkedComponent linkedComponent) {
+        if (isReleaseBlocked) { // if the pistons are in a locked state (wait timer)
+            return;
+        }
+        
+        isReleaseBlocked = true;
+        
         ComponentHandler.setState(linkedComponent.getMagnet(), false); // release the piston
         
         GameHandler.getGame().setReleasedPiston(linkedComponent); // sets the new released piston
         
-        GameHandler.shouldTurnOn = true;
-        System.out.println("Turn on");
-        
-        
+        TaskManager.start(new ChangeMagnetStateTask(linkedComponent.getMagnet(), true, 1));
+        TaskManager.start(new CancelBlockedStateTask());
     }
     
     public static boolean arePistonsDown() {
@@ -50,6 +59,14 @@ public class PistonMechanic {
      */
     public static ArrayList<Component> getPistonsDown() {
         return pistonsDown;
+    }
+    
+    public static void setReleaseBlocked(boolean state) {
+        isReleaseBlocked = state;
+    }
+    
+    public static boolean isReleaseBlocked() {
+        return isReleaseBlocked;
     }
      
 }

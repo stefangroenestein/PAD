@@ -5,6 +5,7 @@
  */
 package PAD.interfaceKit.component;
 
+import PAD.game.GameHandler;
 import PAD.interfaceKit.KitConnector;
 import PAD.interfaceKit.io.IOType;
 import PAD.interfaceKit.io.input.button.ButtonComponent;
@@ -32,7 +33,6 @@ public abstract class ComponentHandler {
     private static PressurePlateComponent pressurePlateComponent = new PressurePlateComponent(); // the pressure plate component child
 
     private static MagnetComponent magnetComponent = new MagnetComponent();
-    
 
     public static void initialize() { // inits the childs and sets the component
         ComponentHandler.getButton().setComponents();
@@ -86,6 +86,30 @@ public abstract class ComponentHandler {
     }
 
     /**
+     * Gets a random linked component
+     *
+     * @return a random linked component
+     */
+    public static LinkedComponent getRandomLinkedComponent() {
+        LinkedComponent[] linkedComponents = new LinkedComponent[ComponentHandler.getMagnet().getComponents().size()];
+
+        if (GameHandler.getGame().getReleasedPiston() == null) { // pick a random linkedComponent if we dont have a previous
+            linkedComponents = LinkedComponent.values();
+            
+        } else { // if we do have a previous we need to exclude it from the next random picking
+            
+            for (int i = 0; i < LinkedComponent.values().length; i++) {
+
+                if (!LinkedComponent.values()[i].equals(GameHandler.getGame().getReleasedPiston())) {
+                    linkedComponents[i] = LinkedComponent.values()[i];
+                }
+            }
+        }
+
+        return linkedComponents[(RandomUtil.getRandomInt(linkedComponents.length))];
+    }
+
+    /**
      * Gets the input state of a component
      *
      * @param component the component which is being read
@@ -95,7 +119,7 @@ public abstract class ComponentHandler {
     public boolean getState(Component component) {
         return false;
     }
-    
+
     public static void setState(Component component, boolean state) {
         ComponentQueue.add(component, state);
     }
@@ -138,17 +162,6 @@ public abstract class ComponentHandler {
      */
     public ArrayList<Component> getComponents() {
         return components;
-    }
-    
-    /**
-     * Gets a random linked component
-     * 
-     * @return a random linked component
-     */
-    public static LinkedComponent getRandomLinkedComponent() {
-         LinkedComponent[] linkedComponents = LinkedComponent.values();
-         
-         return linkedComponents[(RandomUtil.getRandomInt(linkedComponents.length))];
     }
 
 }

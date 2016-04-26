@@ -16,15 +16,15 @@ import PAD.interfaceKit.component.ComponentHandler;
 public abstract class GameHandler {
 
     private static Game game = new Game(); // a game, static because their can only exists one
-    
-    public static boolean shouldTurnOn = false;
 
     /**
      * Starts a new game
      *
      * @param mode the game mode of this game
      */
-    public static void startGame(GameMode mode) {
+    public static void startGame(GameMode mode) {     
+        System.out.println("Starting a new game with game mode: " + mode.toString());
+        
         if (game.getStage().equals(GameStage.FINISHED)) { // check if there isnt a active game
             game = new Game(); // create new
 
@@ -32,8 +32,6 @@ public abstract class GameHandler {
             System.out.println("There is already a active game being played..");
             return;
         }
-        
-        System.out.println("starting game..");
         
         PistonMechanic.getPistonsDown().clear(); // clean list for our pistonAreDown checker
         
@@ -52,8 +50,6 @@ public abstract class GameHandler {
 
             case WAITING_FOR_PISTON:
                 if (PistonMechanic.arePistonsDown()) {
-                    System.out.println("Pistons are pressed down, moving to the next stage..");
-                    
                     PistonMechanic.releasePiston(ComponentHandler.getRandomLinkedComponent());
                     game.setStage(GameStage.RUNNING);
                 } else {

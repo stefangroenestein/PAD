@@ -9,6 +9,7 @@ import PAD.game.GameHandler;
 import PAD.game.GameMode;
 import PAD.interfaceKit.io.IOController;
 import PAD.interfaceKit.component.ComponentHandler;
+import PAD.main.task.TaskManager;
 import com.phidgets.PhidgetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,20 +21,19 @@ import java.util.logging.Logger;
  */
 public class Controller {
     
-    private static boolean isRunning = true;
+    private boolean isRunning = true;
+    
+    private final int SLEEP_TIMER = 500;
    
     public void control() throws InterruptedException, PhidgetException {
 
         while (isRunning) {
             
-            if (GameHandler.shouldTurnOn) {
-                GameHandler.shouldTurnOn = false;
-                ComponentHandler.setState(GameHandler.getGame().getReleasedPiston().getMagnet(), true); // turn the magnet back on so that the piston can be catched 
-            }
-            
             IOController.in();
             
             GameHandler.process();
+            
+            TaskManager.process();
             
             IOController.out();
             
@@ -42,16 +42,17 @@ public class Controller {
             }
             
 
-            Thread.sleep(300); // for now
+            Thread.sleep(SLEEP_TIMER); // for now
         }
 
     }
     
     public void start() {
         try {
- 
             ComponentHandler.initialize();    
+            
             GameHandler.startGame(GameMode.NORMAL);
+            
             control();
             
         } catch (InterruptedException ex) {

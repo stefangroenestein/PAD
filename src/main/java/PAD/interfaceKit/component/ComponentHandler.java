@@ -73,6 +73,7 @@ public abstract class ComponentHandler {
 
                     try {
                         QueuedComponent queuedComponent = ComponentQueue.getNext();
+                        System.out.println("Activate " + queuedComponent.getComponent().toString() + " / id: " + queuedComponent.getComponent().getId() + " / state " + queuedComponent.getState());
                         KitConnector.getKit().setOutputState(queuedComponent.getComponent().getId(), queuedComponent.getState());
 
                     } catch (PhidgetException ex) {
@@ -80,14 +81,6 @@ public abstract class ComponentHandler {
                     }
                 }
                 break;
-
-        }
-
-        for (Component component : components) {
-
-            if (getState(component)) {
-                component.doAction(); // if there is any new input perform the action with it
-            }
 
         }
     }

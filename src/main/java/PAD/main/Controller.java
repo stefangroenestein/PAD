@@ -6,6 +6,7 @@
 package PAD.main;
 
 import PAD.game.GameHandler;
+import PAD.game.GameMode;
 import PAD.interfaceKit.io.IOController;
 import PAD.interfaceKit.component.ComponentHandler;
 import com.phidgets.PhidgetException;
@@ -24,13 +25,24 @@ public class Controller {
     public void control() throws InterruptedException, PhidgetException {
 
         while (isRunning) {
+            
+            if (GameHandler.shouldTurnOn) {
+                GameHandler.shouldTurnOn = false;
+                ComponentHandler.setState(GameHandler.getGame().getReleasedPiston().getMagnet(), true); // turn the magnet back on so that the piston can be catched 
+            }
+            
             IOController.in();
             
             GameHandler.process();
             
             IOController.out();
+            
+            if (GameHandler.getGame().getReleasedPiston() != null) {
+                System.out.println("Expecting piston: " + GameHandler.getGame().getReleasedPiston().getPressurePlate());
+            }
+            
 
-            Thread.sleep(500); // for now
+            Thread.sleep(300); // for now
         }
 
     }
@@ -38,7 +50,8 @@ public class Controller {
     public void start() {
         try {
  
-            ComponentHandler.initialize();         
+            ComponentHandler.initialize();    
+            GameHandler.startGame(GameMode.NORMAL);
             control();
             
         } catch (InterruptedException ex) {

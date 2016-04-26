@@ -33,7 +33,10 @@ public class PistonMechanic {
         
         GameHandler.getGame().setReleasedPiston(linkedComponent); // sets the new released piston
         
-        ComponentHandler.setState(linkedComponent.getMagnet(), true); // turn the magnet back on so that the piston can be catched
+        GameHandler.shouldTurnOn = true;
+        System.out.println("Turn on");
+        
+        
     }
     
     public static boolean arePistonsDown() {

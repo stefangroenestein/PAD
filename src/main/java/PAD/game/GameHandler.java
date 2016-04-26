@@ -16,6 +16,8 @@ import PAD.interfaceKit.component.ComponentHandler;
 public abstract class GameHandler {
 
     private static Game game = new Game(); // a game, static because their can only exists one
+    
+    public static boolean shouldTurnOn = false;
 
     /**
      * Starts a new game
@@ -30,6 +32,8 @@ public abstract class GameHandler {
             System.out.println("There is already a active game being played..");
             return;
         }
+        
+        System.out.println("starting game..");
         
         PistonMechanic.getPistonsDown().clear(); // clean list for our pistonAreDown checker
         

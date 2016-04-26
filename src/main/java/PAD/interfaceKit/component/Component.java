@@ -18,13 +18,11 @@ import PAD.interfaceKit.io.output.magnet.MagnetComponent;
  */
 public enum Component {
     
-    BUTTON_GREEN(0, new GreenButtonAction()),
-    
-    PRESSURE_PLATE_ONE(3, new PressurePlateAction(LinkedComponent.ONE)),
-    PRESSURE_PLATE_TWO(4, new PressurePlateAction(LinkedComponent.TWO)),
-    PRESSURE_PLATE_THREE(5, new PressurePlateAction(LinkedComponent.THREE)),
-    PRESSURE_PLATE_FOUR(6, new PressurePlateAction(LinkedComponent.FOUR)),
-    PRESSURE_PLATE_FIVE(7, new PressurePlateAction(LinkedComponent.FIVE)),
+    PRESSURE_PLATE_ONE(3, new PressurePlateAction(0, 3)),
+    PRESSURE_PLATE_TWO(4, new PressurePlateAction(1, 4)),
+    PRESSURE_PLATE_THREE(5, new PressurePlateAction(2, 5)),
+    PRESSURE_PLATE_FOUR(6, new PressurePlateAction(3, 6)),
+    PRESSURE_PLATE_FIVE(7, new PressurePlateAction(4, 7)),
     
     MAGNET_ONE(0, new MagnetAction()),
     MAGNET_TWO(1, new MagnetAction()),

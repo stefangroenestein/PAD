@@ -31,9 +31,11 @@ public class PressurePlateComponent extends ComponentHandler {
     @Override
     public boolean getState(Component component) {
         try {
+            
+            //System.out.println("Get input state for " + component.toString() + " with id: "+ component.getId());
             return KitConnector.getKit().getSensorValue(component.getId()) >= SENSOR_TRIGGER_VALUE;
         } catch (PhidgetException ex) {
-            Logger.getLogger(ButtonComponent.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
             return false;
         }
     }

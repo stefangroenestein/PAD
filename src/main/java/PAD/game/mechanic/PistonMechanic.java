@@ -12,6 +12,8 @@ import PAD.interfaceKit.component.ComponentHandler;
 import PAD.main.task.TaskManager;
 import PAD.main.task.tasks.CancelBlockedStateTask;
 import PAD.main.task.tasks.ChangeMagnetStateTask;
+import PAD.sound.Sound;
+import PAD.sound.Speaker;
 import java.util.ArrayList;
 
 /**
@@ -37,6 +39,8 @@ public class PistonMechanic {
         if (isReleaseBlocked) { // if the pistons are in a locked state (wait timer)
             return;
         }
+        
+        Speaker.play(Sound.TEST);
         
         isReleaseBlocked = true;
         

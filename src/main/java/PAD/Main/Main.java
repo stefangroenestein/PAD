@@ -5,6 +5,8 @@
  */
 package PAD.main;
 
+import PAD.game.GameHandler;
+import PAD.game.GameMode;
 import PAD.interfaceKit.KitConnector;
 import PAD.sound.Sound;
 import PAD.sound.Speaker;
@@ -26,6 +28,8 @@ public class Main {
         // TODO code application logic here
         KitConnector.initialize();
         controller.start();
+        
+        GameHandler.startGame(GameMode.NORMAL);
         
     }
 }

@@ -5,6 +5,7 @@
  */
 package PAD.interfaceKit.component;
 
+import PAD.Main.debug.Debugger;
 import PAD.game.GameHandler;
 import PAD.interfaceKit.KitConnector;
 import PAD.interfaceKit.io.IOType;
@@ -73,7 +74,9 @@ public abstract class ComponentHandler {
 
                     try {
                         QueuedComponent queuedComponent = ComponentQueue.getNext();
-                        System.out.println("Activate " + queuedComponent.getComponent().toString() + " / id: " + queuedComponent.getComponent().getId() + " / state " + queuedComponent.getState());
+                        
+                        Debugger.write("Activate " + queuedComponent.getComponent().toString() + " / id: " + queuedComponent.getComponent().getId() + " / state " + queuedComponent.getState());
+                        
                         KitConnector.getKit().setOutputState(queuedComponent.getComponent().getId(), queuedComponent.getState());
 
                     } catch (PhidgetException ex) {
@@ -91,22 +94,11 @@ public abstract class ComponentHandler {
      * @return a random linked component
      */
     public static LinkedComponent getRandomLinkedComponent() {
-        LinkedComponent[] linkedComponents = new LinkedComponent[ComponentHandler.getMagnet().getComponents().size()];
-
-        if (GameHandler.getGame().getReleasedPiston() == null) { // pick a random linkedComponent if we dont have a previous
-            linkedComponents = LinkedComponent.values();
-            
-        } else { // if we do have a previous we need to exclude it from the next random picking
-            
-            for (int i = 0; i < LinkedComponent.values().length; i++) {
-
-                if (!LinkedComponent.values()[i].equals(GameHandler.getGame().getReleasedPiston())) {
-                    linkedComponents[i] = LinkedComponent.values()[i];
-                }
-            }
-        }
-
-        return linkedComponents[(RandomUtil.getRandomInt(linkedComponents.length))];
+        LinkedComponent linkedComponent = LinkedComponent.values()[(RandomUtil.getRandomInt(LinkedComponent.values().length))];
+        
+        Debugger.write("Obtained a new linked component: " + linkedComponent.name());
+        
+        return LinkedComponent.values()[(RandomUtil.getRandomInt(LinkedComponent.values().length))];
     }
 
     /**

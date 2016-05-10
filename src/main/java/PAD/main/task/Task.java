@@ -14,7 +14,7 @@ public abstract class Task {
     private int ticks; // after how many ticks the this task should execute
     
     public Task(int ticks) {
-        ticks = ticks;
+        this.ticks = ticks;
     }
     
     public void decreaseTicks() {

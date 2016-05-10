@@ -5,15 +5,13 @@
  */
 package PAD.game.mechanic;
 
-import PAD.game.GameHandler;
+import PAD.Main.task.tasks.ChangeReleasedPistonTask;
 import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.LinkedComponent;
 import PAD.interfaceKit.component.ComponentHandler;
 import PAD.main.task.TaskManager;
 import PAD.main.task.tasks.CancelBlockedStateTask;
 import PAD.main.task.tasks.ChangeMagnetStateTask;
-import PAD.sound.Sound;
-import PAD.sound.Speaker;
 import java.util.ArrayList;
 
 /**
@@ -40,16 +38,13 @@ public class PistonMechanic {
             return;
         }
         
-        Speaker.play(Sound.TEST);
-        
         isReleaseBlocked = true;
         
         ComponentHandler.setState(linkedComponent.getMagnet(), false); // release the piston
         
-        GameHandler.getGame().setReleasedPiston(linkedComponent); // sets the new released piston
-        
-        TaskManager.start(new ChangeMagnetStateTask(linkedComponent.getMagnet(), true, 1));
-        TaskManager.start(new CancelBlockedStateTask());
+        TaskManager.start(new ChangeMagnetStateTask(linkedComponent.getMagnet(), true, 2));
+        TaskManager.start(new ChangeReleasedPistonTask(linkedComponent, 2));
+        TaskManager.start(new CancelBlockedStateTask(3));
     }
     
     public static boolean arePistonsDown() {

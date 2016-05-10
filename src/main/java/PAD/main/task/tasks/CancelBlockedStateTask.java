@@ -5,6 +5,7 @@
  */
 package PAD.main.task.tasks;
 
+import PAD.Main.debug.Debugger;
 import PAD.game.mechanic.PistonMechanic;
 import PAD.main.task.Task;
 
@@ -14,12 +15,13 @@ import PAD.main.task.Task;
  */
 public class CancelBlockedStateTask extends Task {
     
-    public CancelBlockedStateTask() {
-        super(2);
+    public CancelBlockedStateTask(int executeTimer) {
+        super(executeTimer);
     }
 
     @Override
     public void onExecute() {
+        Debugger.write("Exit the blocked state in task");
         PistonMechanic.setReleaseBlocked(false);
     }
     

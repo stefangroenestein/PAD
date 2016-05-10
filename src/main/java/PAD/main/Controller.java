@@ -5,6 +5,7 @@
  */
 package PAD.main;
 
+import PAD.Main.debug.Debugger;
 import PAD.game.GameHandler;
 import PAD.game.GameMode;
 import PAD.interfaceKit.io.IOController;
@@ -23,7 +24,7 @@ public class Controller {
     
     private boolean isRunning = true;
     
-    private final int SLEEP_TIMER = 500;
+    private final int SLEEP_TIMER = 400;
    
     public void control() throws InterruptedException, PhidgetException {
 
@@ -38,7 +39,7 @@ public class Controller {
             IOController.out();
             
             if (GameHandler.getGame().getReleasedPiston() != null) {
-                System.out.println("Expecting piston: " + GameHandler.getGame().getReleasedPiston().getPressurePlate());
+                Debugger.write("Expecting piston: " + GameHandler.getGame().getReleasedPiston().getPressurePlate());
             }
             
 

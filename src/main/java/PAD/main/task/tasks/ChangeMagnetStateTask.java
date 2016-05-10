@@ -5,6 +5,7 @@
  */
 package PAD.main.task.tasks;
 
+import PAD.Main.debug.Debugger;
 import PAD.game.GameHandler;
 import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.ComponentHandler;
@@ -30,6 +31,7 @@ public class ChangeMagnetStateTask extends Task {
     
     @Override
     public void onExecute() {
+        Debugger.write("Changing the magnet state ("+magnet.name()+") to "+state);
         ComponentHandler.setState(magnet, state);
     }
     

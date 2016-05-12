@@ -47,8 +47,6 @@ public class Controller implements Runnable {
         try {
             ComponentHandler.initialize();    
             
-            GameHandler.startGame(GameMode.TIMED_EASY);
-            
             control();
             
         } catch (InterruptedException ex) {

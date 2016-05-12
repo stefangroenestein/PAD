@@ -8,15 +8,15 @@ package PAD.interfaceKit.io.output.magnet;
 import PAD.main.util.RandomUtil;
 import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.ComponentHandler;
+import java.util.ArrayList;
 
 /**
- * Deals with magnets as component
  *
  * @author Youri Dudock
  */
 public class MagnetComponent extends ComponentHandler {
 
-    private final String MAGNET_PREFIX = "MAGNET_"; // the identifier to find the magnets in the component enum
+    private final String MAGNET_PREFIX = "MAGNET_";
     
 
     /**

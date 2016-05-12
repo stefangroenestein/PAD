@@ -35,10 +35,4 @@ public class ChangeMagnetStateTask extends Task {
         ComponentHandler.setState(magnet, state);
     }
     
-    @Override
-    public boolean isOneTimeExecution() {
-        return true;
-    }
-    
-    
 }

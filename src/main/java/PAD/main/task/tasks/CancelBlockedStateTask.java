@@ -24,10 +24,5 @@ public class CancelBlockedStateTask extends Task {
         Debugger.write("Exit the blocked state in task");
         PistonMechanic.setReleaseBlocked(false);
     }
-
-    @Override
-    public boolean isOneTimeExecution() {
-        return true;
-    }
     
 }

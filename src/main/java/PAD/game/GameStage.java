@@ -12,8 +12,9 @@ package PAD.game;
  */
 public enum GameStage {
     
-    WAITING_FOR_PISTON, // waiting for the pistons to be pressed down
-    RUNNING, // game is being played
-    FINISHED; // game is done
+    WAITING_FOR_PISTON,
+    RUNNING,
+    ENDING,
+    FINISHED;
     
 }

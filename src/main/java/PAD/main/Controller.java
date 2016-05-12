@@ -38,7 +38,12 @@ public class Controller {
             
             IOController.out();
             
-            Thread.sleep(SLEEP_TIMER); 
+            if (GameHandler.getGame().getReleasedPiston() != null) {
+                Debugger.write("Expecting piston: " + GameHandler.getGame().getReleasedPiston().getPressurePlate());
+            }
+            
+
+            Thread.sleep(SLEEP_TIMER); // for now
         }
 
     }
@@ -47,7 +52,7 @@ public class Controller {
         try {
             ComponentHandler.initialize();    
             
-            GameHandler.startGame(GameMode.TIMED_EASY);
+            GameHandler.startGame(GameMode.NORMAL);
             
             control();
             

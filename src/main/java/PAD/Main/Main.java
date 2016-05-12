@@ -10,35 +10,15 @@ import PAD.game.GameMode;
 import PAD.interfaceKit.KitConnector;
 import PAD.sound.Sound;
 import PAD.sound.Speaker;
-import java.io.IOException;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 
 /**
  *
  * @author Youri Dudock
  * @author <Stefan Groenestein, IT102, 500726588>
  */
-public class Main extends Application {
+public class Main {
     
     private static Controller controller = new Controller();
-    
-    @Override
-    public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
-        
-        Scene scene = new Scene(root);
-        
-        stage.setScene(scene);
-        stage.show();
-    }
 
     /**
      * @param args the command line arguments
@@ -49,7 +29,7 @@ public class Main extends Application {
         KitConnector.initialize();
         
         controller.start();
-        //launch(args);
+        
         
         
     }

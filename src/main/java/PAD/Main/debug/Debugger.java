@@ -6,20 +6,13 @@
 package PAD.Main.debug;
 
 /**
- * Deals with the debugging of info
  *
  * @author Youri
  */
 public class Debugger {
     
-    private static final boolean DEBUG = true; // if debug is on
+    private static final boolean DEBUG = true;
     
-    /**
-     * Writes a string to the console
-     * 
-     * @param log 
-     *          debug information
-     */
     public static void write(String log) {
         if (DEBUG) {
             System.out.println("[DEBUG] " + log);

@@ -6,9 +6,8 @@
 package PAD.interfaceKit.io;
 
 /**
- * The types of IO
  *
- * @author Youri Dudock
+ * @author Admin
  */
 public enum IOType {
     

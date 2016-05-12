@@ -5,6 +5,7 @@
  */
 package PAD.interfaceKit.io.output.magnet;
 
+import PAD.Main.debug.Debugger;
 import PAD.main.util.RandomUtil;
 import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.ComponentHandler;
@@ -28,6 +29,8 @@ public class MagnetComponent extends ComponentHandler {
         for (Component magnet : getComponents()) {
             ComponentHandler.setState(magnet, state);
         }
+        
+        Debugger.write("Turning all the magnets to state: " + state);
     }
     
     /**

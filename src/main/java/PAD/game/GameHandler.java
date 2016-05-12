@@ -24,13 +24,13 @@ public abstract class GameHandler {
      * @param mode the game mode of this game
      */
     public static void startGame(GameMode mode) {
-        System.out.println("Starting a new game with game mode: " + mode.toString());
+        Debugger.write("Starting a new game with game mode: " + mode.toString());
 
         if (game.getStage().equals(GameStage.FINISHED)) { // check if there isnt a active game
             game = new Game(); // create new
 
         } else if (!game.getStage().equals(GameStage.FINISHED)) {
-            System.out.println("There is already a active game being played..");
+            Debugger.write("There is already a active game being played..");
             return;
         }
 
@@ -58,7 +58,7 @@ public abstract class GameHandler {
 
                     game.setStage(GameStage.RUNNING); // sets the stage to running
                 } else {
-                    System.out.println("Waiting for the pistons to be pressed down..");
+                    Debugger.write("Waiting for the pistons to be pressed down..");
                 }
                 break;
 
@@ -77,7 +77,7 @@ public abstract class GameHandler {
     /**
      * Stops the game
      */
-    public static void stop() {
+    public static void stopGame() {
         game.setStage(GameStage.FINISHED); // sets the stage to finished
 
         game.getTimer().stop(); // stops the timer
@@ -91,7 +91,7 @@ public abstract class GameHandler {
     public abstract void onTick();
 
     /**
-     * This get called when a piston has been pressed down, default operation is
+     * This get called when the RIGHT piston has been pressed down, default operation is
      * adding a point but this can be overwritten
      */
     public void onPistonDown() {

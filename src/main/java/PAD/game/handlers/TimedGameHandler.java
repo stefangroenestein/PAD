@@ -18,7 +18,7 @@ public class TimedGameHandler extends GameHandler {
     @Override
     public void onTick() {
         if (GameHandler.getGame().getTimer().getSeconds() >= GAME_TIME) {
-            GameHandler.stop();
+            GameHandler.stopGame();
         }
     }
     

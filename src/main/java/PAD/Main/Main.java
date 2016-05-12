@@ -5,6 +5,8 @@
  */
 package PAD.main;
 
+import PAD.GUI.InterfaceHandler;
+import PAD.GUI.InterfaceName;
 import PAD.game.GameHandler;
 import PAD.game.GameMode;
 import PAD.interfaceKit.KitConnector;
@@ -32,13 +34,10 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
-        
-        Scene scene = new Scene(root);
-        
-        stage.setScene(scene);
-        stage.show();
+
+        InterfaceHandler.open(InterfaceName.MAIN);
     }
+    
 
     /**
      * @param args the command line arguments

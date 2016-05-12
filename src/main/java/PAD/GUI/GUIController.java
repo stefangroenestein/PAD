@@ -5,6 +5,8 @@
  */
 package PAD.GUI;
 
+import PAD.game.GameHandler;
+import PAD.game.GameMode;
 import PAD.main.Controller;
 import static PAD.main.Main.controller;
 import java.net.URL;
@@ -32,23 +34,26 @@ public class GUIController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+buttonMode1.setOnAction(e ->{
+    GameHandler.startGame(GameMode.NORMAL);
 
+    });
+
+buttonMode2.setOnAction(e ->{
+    GameHandler.startGame(GameMode.TIMED_EASY);
+
+    });
+    new Thread(controller).start();
     }
 
     @FXML
     public void startMode1() {
-
-        System.out.println("start");
-
-        buttonMode1.setOnAction(e -> {
-           new Thread(controller).start();
-                    
-        });
 
     }
 
     private void start() {
 
     }
+    }
 
-}
+

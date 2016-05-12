@@ -28,7 +28,7 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
     
-    private static Controller controller = new Controller();
+    public static Controller controller = new Controller();
     
     @Override
     public void start(Stage stage) throws IOException {
@@ -46,10 +46,10 @@ public class Main extends Application {
      */
     public static void main(String[] args) throws Exception {
         // TODO code application logic here
-        KitConnector.initialize();
         
-        controller.start();
-        //launch(args);
+                
+         KitConnector.initialize();
+        launch(args);
         
         
     }

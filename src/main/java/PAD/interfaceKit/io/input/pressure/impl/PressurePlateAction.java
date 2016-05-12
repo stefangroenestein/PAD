@@ -49,10 +49,16 @@ public class PressurePlateAction implements ComponentAction {
             if (GameHandler.getGame().getReleasedPiston() == null) { // prevent nullpointer exception
                 return;
             }
+            
+            if (PistonMechanic.isReleaseBlocked()) {
+                return;
+            }
 
             if (GameHandler.getGame().getReleasedPiston().equals(linkedComponent)) {
 
                 Debugger.write("Correct pressure plate has been pressed with ID: " + (linkedComponentIndex + 1));
+                
+                GameHandler.getGame().getMode().getHandler().onPistonDown();
 
                 Speaker.play(Sound.TEST);
 

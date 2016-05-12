@@ -5,11 +5,10 @@
  */
 package PAD.GUI;
 
+import PAD.main.Main;
 import static PAD.main.Main.controller;
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -20,6 +19,7 @@ import javafx.scene.control.Button;
  * @author max
  */
 public class GUIController implements Initializable {
+
     @FXML
     private Button buttonMode1;    // eerste knop
     @FXML
@@ -32,26 +32,23 @@ public class GUIController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
- 
-    }    
-    
-    @FXML
-    public void startMode1 (){
-           
-   buttonMode1.setOnAction(e -> controller.start());
-   
-            
-           
-   
-    
-    
+
     }
+
+    @FXML
+    public void startMode1() {
+
+        System.out.println("start");
+
+        buttonMode1.setOnAction(e -> {
+            controller.start();
+                    
+        });
+
+    }
+
     private void start() {
-    
-       
+
+    }
 
 }
-
-}
-
-

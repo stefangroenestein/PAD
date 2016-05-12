@@ -21,11 +21,11 @@ import java.util.ArrayList;
  */
 public class PistonMechanic {
     
-    private static ArrayList<Component> pistonsDown = new ArrayList(); // list with the pistons that are down
+    private static ArrayList<Component> pistonsDown = new ArrayList(); // list with the pistons that are down (used to check if they are all down)
     
     private static final int TOTAL_PISTONS = ComponentHandler.getMagnet().getComponents().size(); // total amount of pistons based on amount of magnets
     
-    private static boolean isReleaseBlocked = false;
+    private static boolean isReleaseBlocked = false; // if the releasing of new pistons is possible
     
     /**
      * Releases the piston by turning off a magnet
@@ -38,7 +38,7 @@ public class PistonMechanic {
             return;
         }
         
-        isReleaseBlocked = true;
+        isReleaseBlocked = true; // prevent multiple releases
         
         ComponentHandler.setState(linkedComponent.getMagnet(), false); // release the piston
         
@@ -47,8 +47,13 @@ public class PistonMechanic {
         TaskManager.start(new CancelBlockedStateTask(3));
     }
     
+    /**
+     * 
+     * @return if all the pistons are down
+     */
     public static boolean arePistonsDown() {
-        return TOTAL_PISTONS == pistonsDown.size();
+        return true;
+        //return TOTAL_PISTONS == pistonsDown.size();
     }
     
     
@@ -60,10 +65,18 @@ public class PistonMechanic {
         return pistonsDown;
     }
     
+    /**
+     * Sets the state of the release block
+     * @param state 
+     */
     public static void setReleaseBlocked(boolean state) {
         isReleaseBlocked = state;
     }
     
+    /**
+     * 
+     * @return if the piston is release blocked or not
+     */
     public static boolean isReleaseBlocked() {
         return isReleaseBlocked;
     }

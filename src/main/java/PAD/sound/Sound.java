@@ -14,12 +14,16 @@ public enum Sound {
     
     TEST("test");
     
-    private String fileName;
+    private String fileName; // name of the file
     
     private Sound(String fileName) {
         this.fileName = fileName;
     }
 
+    /**
+     * 
+     * @return the name of the file
+     */
     public String getFileName() {
         return fileName;
     }

@@ -13,6 +13,11 @@ import PAD.game.GameHandler;
  */
 public class NormalGameHandler extends GameHandler {
 
+    @Override
+    public void onTick() {
+        
+    }
+
 
     
 }

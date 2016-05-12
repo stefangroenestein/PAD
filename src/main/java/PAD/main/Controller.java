@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  * @author Youri Dudock
  * @author <Stefan Groenestein, IT102, 500726588>
  */
-public class Controller {
+public class Controller implements Runnable {
     
     private boolean isRunning = true;
     
@@ -60,6 +60,11 @@ public class Controller {
     
     public void stop() {
         isRunning = false;
+    }
+
+    @Override
+    public void run() {
+        start();
     }
 
 }

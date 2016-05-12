@@ -5,7 +5,7 @@
  */
 package PAD.GUI;
 
-import PAD.main.Main;
+import PAD.main.Controller;
 import static PAD.main.Main.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -41,7 +41,7 @@ public class GUIController implements Initializable {
         System.out.println("start");
 
         buttonMode1.setOnAction(e -> {
-            controller.start();
+           new Thread(controller).start();
                     
         });
 

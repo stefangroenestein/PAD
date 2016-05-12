@@ -32,4 +32,10 @@ public class ChangeReleasedPistonTask extends Task {
         GameHandler.getGame().setReleasedPiston(linkedComponent); 
     }
     
+    @Override
+    public boolean isOneTimeExecution() {
+        return true;
+    }
+    
+    
 }

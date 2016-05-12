@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class KitConnector {
 
     private static InterfaceKitPhidget kit; // a instance of the interface kit
-    
+
     private static final int WAIT_TIMER = 5000; // the max amount of waiting time before disconnecting
 
     /**
@@ -28,16 +28,16 @@ public class KitConnector {
     private static void connect() {
         try {
             kit.openAny(); // opens a connection with the kit
-            
+
             System.out.println("Trying to connect the InterfaceKit... (Time out: " + WAIT_TIMER + ")");
-            
+
             kit.waitForAttachment(WAIT_TIMER); // setting a wait timer
-            
+
             System.out.println("InterfaceKit connected!"); // succes!
         } catch (PhidgetException ex) {
             System.err.println("Time out! Unable to connect in time with the InterfaceKit.");
             System.out.println("Attempting to reconnect..");
-            
+
             initialize();
         }
     }
@@ -51,13 +51,12 @@ public class KitConnector {
         } catch (PhidgetException ex) {
             Logger.getLogger(KitConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
- 
+
         connect();
     }
-    
-    
+
     /**
-     * 
+     *
      * @return a instance of our kit
      */
     public static InterfaceKitPhidget getKit() {

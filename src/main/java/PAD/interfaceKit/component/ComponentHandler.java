@@ -54,9 +54,7 @@ public abstract class ComponentHandler {
         }
     }
 
-    /**
-     * Checks if there is any new input
-     */
+    
     public void process(IOType type) {
         switch (type) {
 

@@ -8,6 +8,7 @@ package PAD.game.handlers;
 import PAD.game.GameHandler;
 
 /**
+ * The handling of a timed game mode
  *
  * @author Youri
  */
@@ -17,9 +18,12 @@ public class TimedGameHandler extends GameHandler {
 
     @Override
     public void onTick() {
-        if (GameHandler.getGame().getTimer().getSeconds() >= GAME_TIME) {
-            GameHandler.stopGame();
-        }
+        
+    }
+    
+    @Override
+    public int getGameLength() {
+        return GAME_TIME;
     }
     
 }

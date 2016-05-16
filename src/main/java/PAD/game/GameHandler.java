@@ -16,7 +16,7 @@ import PAD.interfaceKit.component.ComponentHandler;
  */
 public abstract class GameHandler {
 
-    private static Game game = new Game(); // a game, static because their can only exists one
+    private static Game game = new Game(); // a game, static because their can only exists one and we need the game to be global
 
     /**
      * Starts a new game
@@ -47,10 +47,11 @@ public abstract class GameHandler {
      * Proceses the game, this gets called every tick
      */
     public static void process() {
+
         switch (game.getStage()) {
 
             case WAITING_FOR_PISTON: // if the game is waiting for the pistons to be pressed down
-                if (PistonMechanic.arePistonsDown()) {
+                if (PistonMechanic.arePistonsDown()) { // if all the pistons are down
 
                     game.getTimer().start(); // starts the timer
 
@@ -66,7 +67,15 @@ public abstract class GameHandler {
                 if (GameHandler.getGame().getReleasedPiston() != null) {
                     Debugger.write("Expecting piston: " + GameHandler.getGame().getReleasedPiston().getPressurePlate());
                 }
-                
+
+                if (game.getMode().isTimed()) {
+
+                    if (game.getTimer().getSeconds() >= game.getMode().getHandler().getGameLength()) {
+                        stopGame();
+                    }
+
+                }
+
                 game.getMode().getHandler().onTick();
                 break;
 
@@ -91,11 +100,21 @@ public abstract class GameHandler {
     public abstract void onTick();
 
     /**
-     * This get called when the RIGHT piston has been pressed down, default operation is
-     * adding a point but this can be overwritten
+     * This get called when the RIGHT piston has been pressed down, default
+     * operation is adding a point but this can be overwritten
      */
-    public void onPistonDown() {
+    public void onCorrectPistonDownHook() {
         game.increasePoints(); // increases the points
+    }
+
+    /**
+     * This gives us the length in seconds of a game should only be overwritten
+     * if the game is a timed game
+     *
+     * @return the length of a game
+     */
+    public int getGameLength() {
+        return 0;
     }
 
     /**

@@ -17,7 +17,7 @@ public abstract class Task {
 
     private int ticksLeft; // the ticks left before the exection should happen
 
-    private boolean shouldStop = false;
+    private boolean aborted = false; // if the task has aborted or not
 
     public Task(int ticks) {
         this.ticks = ticks;
@@ -50,16 +50,16 @@ public abstract class Task {
     /**
      * Stops the task and prevents executing on the next tick
      */
-    public void stop() {
-        shouldStop = true;
+    public void abort() {
+        aborted = true;
     }
 
     /**
      *
      * @return if the task should stop
      */
-    public boolean shouldStop() {
-        return shouldStop;
+    public boolean hasAborted() {
+        return aborted;
     }
 
     /**

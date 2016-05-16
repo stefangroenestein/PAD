@@ -20,65 +20,66 @@ import java.util.ArrayList;
  * @author Youri Dudock
  */
 public class PistonMechanic {
-    
+
     private static ArrayList<Component> pistonsDown = new ArrayList(); // list with the pistons that are down (used to check if they are all down)
-    
+
     private static final int TOTAL_PISTONS = ComponentHandler.getMagnet().getComponents().size(); // total amount of pistons based on amount of magnets
-    
+
     private static boolean isReleaseBlocked = false; // if the releasing of new pistons is possible
-    
+
     /**
      * Releases the piston by turning off a magnet
-     * 
-     * @param linkedComponent 
-     *                       The linked component which contains the id of the magnet and the connected pressure plate
+     *
+     * @param linkedComponent The linked component which contains the id of the
+     * magnet and the connected pressure plate
      */
     public static void releasePiston(LinkedComponent linkedComponent) {
         if (isReleaseBlocked) { // if the pistons are in a locked state (wait timer)
             return;
         }
-        
+
         isReleaseBlocked = true; // prevent multiple releases
-        
+
         ComponentHandler.setState(linkedComponent.getMagnet(), false); // release the piston
-        
-        TaskManager.start(new ChangeMagnetStateTask(linkedComponent.getMagnet(), true, 2));
-        TaskManager.start(new ChangeReleasedPistonTask(linkedComponent, 2));
-        TaskManager.start(new CancelBlockedStateTask(3));
+
+        TaskManager.start(
+                new ChangeMagnetStateTask(linkedComponent.getMagnet(), true, 2),
+                new ChangeReleasedPistonTask(linkedComponent, 2),
+                new CancelBlockedStateTask(3)
+        );
     }
-    
+
     /**
-     * 
+     *
      * @return if all the pistons are down
      */
     public static boolean arePistonsDown() {
-        return true;
-        //return TOTAL_PISTONS == pistonsDown.size();
+        return TOTAL_PISTONS == pistonsDown.size();
     }
-    
-    
+
     /**
-     * 
+     *
      * @return a list with pistons
      */
     public static ArrayList<Component> getPistonsDown() {
         return pistonsDown;
     }
-    
+
     /**
      * Sets the state of the release block
-     * @param state 
+     *
+     * @param state
      */
     public static void setReleaseBlocked(boolean state) {
         isReleaseBlocked = state;
     }
-    
+
     /**
-     * 
+     *
      * @return if the piston is release blocked or not
      */
     public static boolean isReleaseBlocked() {
         return isReleaseBlocked;
     }
-     
+
 }

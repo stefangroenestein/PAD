@@ -41,7 +41,7 @@ public class PressurePlateAction implements ComponentAction {
             if (!PistonMechanic.getPistonsDown().contains(linkedComponent.getPressurePlate())) { // If this is a new entry
                 PistonMechanic.getPistonsDown().add(linkedComponent.getPressurePlate());
 
-                System.out.println("Pressure plate added to list with id: " + linkedComponent.getPressurePlate().getId());
+                Debugger.write("Pressure plate added to list with id: " + linkedComponent.getPressurePlate().getId());
             }
 
         } else if (GameHandler.getGame().getStage().equals(GameStage.RUNNING)) {
@@ -49,16 +49,12 @@ public class PressurePlateAction implements ComponentAction {
             if (GameHandler.getGame().getReleasedPiston() == null) { // prevent nullpointer exception
                 return;
             }
-            
-            if (PistonMechanic.isReleaseBlocked()) {
-                return;
-            }
-
+           
             if (GameHandler.getGame().getReleasedPiston().equals(linkedComponent)) {
 
                 Debugger.write("Correct pressure plate has been pressed with ID: " + (linkedComponentIndex + 1));
                 
-                GameHandler.getGame().getMode().getHandler().onPistonDown();
+                GameHandler.getGame().getMode().getHandler().onCorrectPistonDownHook();
 
                 Speaker.play(Sound.TEST);
 

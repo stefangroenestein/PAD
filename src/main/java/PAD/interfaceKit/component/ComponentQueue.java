@@ -8,6 +8,7 @@ package PAD.interfaceKit.component;
 import java.util.ArrayList;
 
 /**
+ * Contains a queue which holds output components that need their state changed, we process the queue as the last action in our tick based cycle
  *
  * @author Youri Dudock
  */
@@ -40,10 +41,20 @@ public class ComponentQueue {
         return queuedComponent;
     }
     
+    /**
+     * Checks if the queue has a next
+     * 
+     * @return if there is another item in the queue
+     */
     public static boolean hasNext() {
         return queue.size() >= 1;
     }
 
+    /**
+     * Gets the whole queue 
+     * 
+     * @return gets the queue as array list
+     */
     public static ArrayList<QueuedComponent> getQueue() {
         return queue;
     }

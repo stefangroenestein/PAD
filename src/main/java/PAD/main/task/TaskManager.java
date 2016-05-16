@@ -17,12 +17,15 @@ public class TaskManager {
     private static ArrayList<Task> tasks = new ArrayList(); // a list with active tasks
 
     /**
-     * Starts a new task
-     *
-     * @param task a task
+     * Starts one or more new tasks
+     * 
+     * @param tasks
+     *             A list with tasks
      */
-    public static void start(Task task) {
-        tasks.add(task); // adds the task to the list
+    public static void start(Task... tasks) {
+        for (Task task : tasks) {
+            TaskManager.tasks.add(task);
+        }
     }
 
     /**
@@ -33,7 +36,7 @@ public class TaskManager {
 
         for (Task task : tasks) { // loops trough all the tasks
 
-            if (task.shouldStop()) { // skip the task if the task should stop
+            if (task.hasAborted()) { // skip the task if the task should stop
                 continue;
             }
 

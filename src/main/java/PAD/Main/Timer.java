@@ -34,6 +34,10 @@ public class Timer {
      * Starts the timer 
      */
     public void start() {
+        if (timerTask != null && !timerTask.hasAborted()) { // prevent multiple timers from running, preventing (possible) memory leaks
+            timerTask.abort();
+        }
+        
         timerTask = new TimerTask(this, 3); // creates a new timer task
         
         TaskManager.start(timerTask); // starts the task
@@ -43,7 +47,7 @@ public class Timer {
      * Stops the timer
      */
     public void stop() {
-        timerTask.stop();
+        timerTask.abort();
     }
     
     /**

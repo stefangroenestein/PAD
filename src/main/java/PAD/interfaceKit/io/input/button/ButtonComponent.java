@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import java.util.ArrayList;
 
 /**
+ * Deals with button components
  *
  * @author Youri Dudock
  */
@@ -29,7 +30,7 @@ public class ButtonComponent extends ComponentHandler {
     @Override
     public boolean getState(Component component) {
         try {
-            return KitConnector.getKit().getInputState(component.getId());
+            return KitConnector.getKit().getInputState(component.getId()); // read if pressed
         } catch (PhidgetException ex) {
             Logger.getLogger(ButtonComponent.class.getName()).log(Level.SEVERE, null, ex);
             return false;

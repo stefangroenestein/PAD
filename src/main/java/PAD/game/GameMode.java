@@ -15,17 +15,20 @@ import PAD.game.handlers.TimedGameHandler;
  */
 public enum GameMode {
     
-    NORMAL(new NormalGameHandler()), // this is a normal game without any timer that runs down (sandbox)
-    TIMED_EASY(new TimedGameHandler()); // this is a mode which has a timer run down and you need to be as fast as possible
+    NORMAL(new NormalGameHandler(), false), // this is a normal game without any timer that runs down (sandbox)
+    TIMED_EASY(new TimedGameHandler(), true); // this is a mode which has a timer run down and you need to be as fast as possible
     
     private GameHandler handler; // the handler that handles this mode
+    
+    private boolean isTimed;
     
     /**
      * 
      * @param handler 
      */
-    private GameMode(GameHandler handler) {
+    private GameMode(GameHandler handler, boolean isTimed) {
         this.handler = handler;
+        this.isTimed = isTimed;
     }
     
     /**
@@ -34,6 +37,10 @@ public enum GameMode {
      */
     public GameHandler getHandler() {
         return handler;
+    }
+    
+    public boolean isTimed() {
+        return isTimed;
     }
     
     

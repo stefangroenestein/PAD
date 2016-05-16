@@ -10,6 +10,7 @@ import PAD.interfaceKit.io.IOController;
 import PAD.interfaceKit.io.IOType;
 
 /**
+ * Deals with input from the components
  *
  * @author Youri Dudock
  */

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PAD.Main;
+package PAD.main;
 
-import PAD.Main.debug.Debugger;
-import PAD.Main.task.tasks.TimerTask;
+import PAD.main.debug.Debugger;
+import PAD.main.task.tasks.TimerTask;
 import PAD.main.task.Task;
 import PAD.main.task.TaskManager;
 

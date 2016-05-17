@@ -5,7 +5,7 @@
  */
 package PAD.game;
 
-import PAD.Main.debug.Debugger;
+import PAD.main.debug.Debugger;
 import PAD.game.mechanic.PistonMechanic;
 import PAD.interfaceKit.component.ComponentHandler;
 

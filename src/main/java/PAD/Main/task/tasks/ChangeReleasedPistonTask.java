@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PAD.Main.task.tasks;
+package PAD.main.task.tasks;
 
-import PAD.Main.debug.Debugger;
+import PAD.main.debug.Debugger;
 import PAD.game.GameHandler;
 import PAD.interfaceKit.component.ComponentHandler;
 import PAD.interfaceKit.component.LinkedComponent;

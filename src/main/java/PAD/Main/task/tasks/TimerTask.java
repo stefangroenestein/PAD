@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PAD.Main.task.tasks;
+package PAD.main.task.tasks;
 
-import PAD.Main.Timer;
+import PAD.main.Timer;
 import PAD.main.task.Task;
 
 /**

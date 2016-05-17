@@ -5,7 +5,7 @@
  */
 package PAD.interfaceKit.component;
 
-import PAD.Main.debug.Debugger;
+import PAD.main.debug.Debugger;
 import PAD.game.GameHandler;
 import PAD.interfaceKit.KitConnector;
 import PAD.interfaceKit.io.IOType;

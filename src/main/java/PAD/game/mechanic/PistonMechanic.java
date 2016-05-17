@@ -5,7 +5,7 @@
  */
 package PAD.game.mechanic;
 
-import PAD.Main.task.tasks.ChangeReleasedPistonTask;
+import PAD.main.task.tasks.ChangeReleasedPistonTask;
 import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.LinkedComponent;
 import PAD.interfaceKit.component.ComponentHandler;

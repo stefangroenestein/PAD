@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PAD.Main.debug;
+package PAD.main.debug;
 
 /**
  * Deals with the debugging of info

@@ -5,7 +5,7 @@
  */
 package PAD.main.task.tasks;
 
-import PAD.Main.debug.Debugger;
+import PAD.main.debug.Debugger;
 import PAD.game.GameHandler;
 import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.ComponentHandler;

@@ -5,7 +5,7 @@
  */
 package PAD.interfaceKit.io.input.pressure.impl;
 
-import PAD.Main.debug.Debugger;
+import PAD.main.debug.Debugger;
 import PAD.game.GameHandler;
 import PAD.game.GameStage;
 import PAD.game.mechanic.PistonMechanic;

@@ -5,7 +5,7 @@
  */
 package PAD.main.task.tasks;
 
-import PAD.Main.debug.Debugger;
+import PAD.main.debug.Debugger;
 import PAD.game.mechanic.PistonMechanic;
 import PAD.main.task.Task;
 

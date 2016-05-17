@@ -5,8 +5,8 @@
  */
 package PAD.game;
 
-import PAD.Main.Timer;
-import PAD.Main.debug.Debugger;
+import PAD.main.Timer;
+import PAD.main.debug.Debugger;
 import PAD.interfaceKit.component.LinkedComponent;
 
 /**

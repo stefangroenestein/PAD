@@ -5,7 +5,7 @@
  */
 package PAD.interfaceKit.io.output.magnet;
 
-import PAD.Main.debug.Debugger;
+import PAD.main.debug.Debugger;
 import PAD.main.util.RandomUtil;
 import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.ComponentHandler;

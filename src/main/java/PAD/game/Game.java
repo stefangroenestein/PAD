@@ -58,7 +58,7 @@ public class Game {
     public Timer getTimer() {
         return timer;
     }
-
+    
     /**
      *
      * @return the points gained by the player in this game

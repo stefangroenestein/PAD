@@ -7,6 +7,7 @@ package PAD.game;
 
 import PAD.main.debug.Debugger;
 import PAD.game.mechanic.PistonMechanic;
+import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.ComponentHandler;
 
 /**
@@ -17,7 +18,7 @@ import PAD.interfaceKit.component.ComponentHandler;
 public abstract class GameHandler {
 
     private static Game game = new Game(); // a game, static because their can only exists one and we need the game to be global
-
+    
     /**
      * Starts a new game
      *
@@ -37,35 +38,37 @@ public abstract class GameHandler {
         PistonMechanic.getPistonsDown().clear(); // clean list for our pistonAreDown checker
 
         ComponentHandler.getMagnet().setMagnets(true); // turn all the magnets on
+        ComponentHandler.setState(Component.Red_light, true); // turn the red lights on
 
         game.setGameMode(mode); // sets the game mode for this game
 
         game.setStage(GameStage.WAITING_FOR_PISTON); // sets the game in the next game stage
     }
-
+    
     /**
      * Proceses the game, this gets called every tick
      */
     public static void process() {
-
+        
         switch (game.getStage()) {
-
+            
             case WAITING_FOR_PISTON: // if the game is waiting for the pistons to be pressed down
                 if (PistonMechanic.arePistonsDown()) { // if all the pistons are down
 
                     game.getTimer().start(); // starts the timer
 
                     PistonMechanic.releasePiston(ComponentHandler.getRandomLinkedComponent()); // released a random piston
-
+                                          
                     game.setStage(GameStage.RUNNING); // sets the stage to running
                 } else {
                     Debugger.write("Waiting for the pistons to be pressed down..");
                 }
                 break;
-
+                
             case RUNNING:
                 if (GameHandler.getGame().getReleasedPiston() != null) {
                     Debugger.write("Expecting piston: " + GameHandler.getGame().getReleasedPiston().getPressurePlate());
+                    
                 }
 
                 if (game.getMode().isTimed()) {
@@ -124,5 +127,5 @@ public abstract class GameHandler {
     public static Game getGame() {
         return game;
     }
-
+   
 }

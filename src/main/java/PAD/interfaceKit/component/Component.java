@@ -28,8 +28,11 @@ public enum Component {
     MAGNET_TWO(1, new MagnetAction()),
     MAGNET_THREE(2, new MagnetAction()),
     MAGNET_FOUR(3, new MagnetAction()),
-    MAGNET_FIVE(4, new MagnetAction());
-    
+    MAGNET_FIVE(4, new MagnetAction()),
+
+    Red_light(5, null),
+    Green_light(6, null),
+    Blue_light(7, null);
     
     private int id;
     

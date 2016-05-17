@@ -26,7 +26,7 @@ public class PressurePlateAction implements ComponentAction {
     private LinkedComponent linkedComponent;
 
     private int linkedComponentIndex;
-
+    private static int count = 0;
     @Override
     public void trigger() {
         
@@ -57,6 +57,26 @@ public class PressurePlateAction implements ComponentAction {
                 GameHandler.getGame().getMode().getHandler().onCorrectPistonDownHook();
 
                 Speaker.play(Sound.TEST);
+                
+                
+                    if (count == 0 ) {
+                        ComponentHandler.setState(Component.Red_light, true);
+                        ComponentHandler.setState(Component.Green_light, false);
+                        ComponentHandler.setState(Component.Blue_light, false);
+                        count++;
+                    }
+                    else if (count == 1 ) {
+                        ComponentHandler.setState(Component.Red_light, false);
+                        ComponentHandler.setState(Component.Green_light, true);
+                        ComponentHandler.setState(Component.Blue_light, false);
+                        count++;
+                    }
+                    else if (count == 2 ) {
+                        ComponentHandler.setState(Component.Red_light, false);
+                        ComponentHandler.setState(Component.Green_light, false);
+                        ComponentHandler.setState(Component.Blue_light, true);
+                        count = 0;
+                    }
 
                 PistonMechanic.releasePiston(ComponentHandler.getRandomLinkedComponent());
             }

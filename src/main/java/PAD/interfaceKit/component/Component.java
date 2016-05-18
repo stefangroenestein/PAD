@@ -30,9 +30,9 @@ public enum Component {
     MAGNET_FOUR(3, new MagnetAction()),
     MAGNET_FIVE(4, new MagnetAction()),
 
-    Red_light(5, null),
-    Green_light(6, null),
-    Blue_light(7, null);
+    LIGHT_RED(5, null),
+    LIGHT_GREEN(6, null),
+    LIGHT_BLUE(7, null);
     
     private int id;
     

@@ -38,7 +38,6 @@ public abstract class GameHandler {
         PistonMechanic.getPistonsDown().clear(); // clean list for our pistonAreDown checker
 
         ComponentHandler.getMagnet().setMagnets(true); // turn all the magnets on
-        ComponentHandler.setState(Component.Red_light, true); // turn the red lights on
 
         game.setGameMode(mode); // sets the game mode for this game
 

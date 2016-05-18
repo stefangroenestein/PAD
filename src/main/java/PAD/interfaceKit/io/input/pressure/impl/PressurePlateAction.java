@@ -13,6 +13,7 @@ import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.ComponentAction;
 import PAD.interfaceKit.component.ComponentHandler;
 import PAD.interfaceKit.component.LinkedComponent;
+import PAD.interfaceKit.io.output.LED.LedColor;
 import PAD.main.Main;
 import PAD.sound.Sound;
 import PAD.sound.Speaker;
@@ -60,21 +61,15 @@ public class PressurePlateAction implements ComponentAction {
                 
                 
                     if (count == 0 ) {
-                        ComponentHandler.setState(Component.Red_light, true);
-                        ComponentHandler.setState(Component.Green_light, false);
-                        ComponentHandler.setState(Component.Blue_light, false);
+                        ComponentHandler.getLed().turnLedOn(LedColor.RED);
                         count++;
                     }
                     else if (count == 1 ) {
-                        ComponentHandler.setState(Component.Red_light, false);
-                        ComponentHandler.setState(Component.Green_light, true);
-                        ComponentHandler.setState(Component.Blue_light, false);
+                        ComponentHandler.getLed().turnLedOn(LedColor.GREEN);
                         count++;
                     }
                     else if (count == 2 ) {
-                        ComponentHandler.setState(Component.Red_light, false);
-                        ComponentHandler.setState(Component.Green_light, false);
-                        ComponentHandler.setState(Component.Blue_light, true);
+                        ComponentHandler.getLed().turnLedOn(LedColor.BLUE);
                         count = 0;
                     }
 

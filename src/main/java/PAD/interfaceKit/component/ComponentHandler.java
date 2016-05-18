@@ -11,6 +11,7 @@ import PAD.interfaceKit.KitConnector;
 import PAD.interfaceKit.io.IOType;
 import PAD.interfaceKit.io.input.button.ButtonComponent;
 import PAD.interfaceKit.io.input.pressure.PressurePlateComponent;
+import PAD.interfaceKit.io.output.LED.LedComponent;
 import PAD.interfaceKit.io.output.magnet.MagnetComponent;
 import PAD.main.util.RandomUtil;
 import com.phidgets.PhidgetException;
@@ -24,6 +25,7 @@ import java.util.logging.Logger;
  * read
  *
  * @author Youri Dudock
+ * @author Bobbie hondeveld
  */
 public abstract class ComponentHandler {
 
@@ -34,6 +36,8 @@ public abstract class ComponentHandler {
     private static PressurePlateComponent pressurePlateComponent = new PressurePlateComponent(); // the pressure plate component child
 
     private static MagnetComponent magnetComponent = new MagnetComponent();
+    
+    private static LedComponent ledComponent = new LedComponent();
 
     public static void initialize() { // inits the childs and sets the component
         ComponentHandler.getButton().setComponents();
@@ -143,6 +147,14 @@ public abstract class ComponentHandler {
      */
     public static MagnetComponent getMagnet() {
         return magnetComponent;
+    }
+    
+    /**
+     * 
+     * @return the led component 'handler'
+     */
+    public static LedComponent getLed() {
+        return ledComponent;
     }
 
     /**

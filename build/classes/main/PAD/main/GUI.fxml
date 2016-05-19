@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PAD.GUI.GUIController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="600.0">
+         <children>
+            <AnchorPane maxWidth="1.7976931348623157E308">
+               <children>
+                  <TabPane styleClass="backgroundColor" stylesheets="@GuiStyle.css" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab id="Game" text="Game">
+                           <content>
+                              <AnchorPane id="AnchorPane" prefHeight="452.0" prefWidth="601.0">
+                                 <children>
+                                    <GridPane prefHeight="325.0" prefWidth="539.0">
+                                      <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="200.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                          <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="85.0" minHeight="85.0" prefHeight="85.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="85.0" minHeight="85.0" prefHeight="85.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <padding>
+                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                       </padding>
+                                       <children>
+                                          <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                            <buttons>
+                                              <Button fx:id="buttonMode1" mnemonicParsing="false" onAction="#startMode1" prefHeight="75.0" prefWidth="350.0" text="Start" />
+                                            </buttons>
+                                          </ButtonBar>
+                                          <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                            <buttons>
+                                              <Button fx:id="buttonMode2" mnemonicParsing="false" prefHeight="75.0" prefWidth="350.0" text="Start" />
+                                            </buttons>
+                                          </ButtonBar>
+                                          <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                            <buttons>
+                                              <Button fx:id="buttonMode3" mnemonicParsing="false" prefHeight="75.0" prefWidth="350.0" text="Start" />
+                                            </buttons>
+                                          </ButtonBar>
+                                          <Text fill="ORANGE" strokeType="OUTSIDE" strokeWidth="0.0" text="Game mode 1" wrappingWidth="143.6708984375" GridPane.rowIndex="1" />
+                                          <Text fill="ORANGE" strokeType="OUTSIDE" strokeWidth="0.0" text="Game mode 2" GridPane.rowIndex="3" />
+                                          <Text fill="ORANGE" strokeType="OUTSIDE" strokeWidth="0.0" text="Game mode 3" GridPane.rowIndex="5" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                      <Tab text="Highscore">
+                           <content>
+                              <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0">
+                                 <children>
+                                    <TableView id="highscoreTable" opacity="0.45" prefHeight="400.0" prefWidth="601.0">
+                                      <columns>
+                                        <TableColumn id="tableName" prefWidth="302.0" text="Name" />
+                                        <TableColumn id="tableScore" minWidth="0.0" prefWidth="245.0" text="Score" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Settings">
+                           <content>
+                              <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0">
+    
+</AnchorPane>
+                           </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

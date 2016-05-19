@@ -61,15 +61,15 @@ public class PressurePlateAction implements ComponentAction {
                 
                 
                     if (count == 0 ) {
-                        ComponentHandler.getLed().turnLedOn(LedColor.RED);
+                        ComponentHandler.getLed().turnOn(LedColor.RED);
                         count++;
                     }
                     else if (count == 1 ) {
-                        ComponentHandler.getLed().turnLedOn(LedColor.GREEN);
+                        ComponentHandler.getLed().turnOn(LedColor.GREEN);
                         count++;
                     }
                     else if (count == 2 ) {
-                        ComponentHandler.getLed().turnLedOn(LedColor.BLUE);
+                        ComponentHandler.getLed().turnOn(LedColor.BLUE);
                         count = 0;
                     }
 

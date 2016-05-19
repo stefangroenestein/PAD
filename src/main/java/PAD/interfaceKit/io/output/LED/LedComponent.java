@@ -18,7 +18,7 @@ public class LedComponent extends ComponentHandler{
     public String getPrefix() {
         return "LIGHT_";
     }
-    public void turnLedOn(LedColor color){
+    public void turnOn(LedColor color){
         ComponentHandler.setState(Component.LIGHT_RED, color.getColorRed());
         ComponentHandler.setState(Component.LIGHT_GREEN, color.getColorGreen());
         ComponentHandler.setState(Component.LIGHT_BLUE, color.getColorBlue());

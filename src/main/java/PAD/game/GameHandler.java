@@ -9,6 +9,8 @@ import PAD.main.debug.Debugger;
 import PAD.game.mechanic.PistonMechanic;
 import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.ComponentHandler;
+import PAD.sound.Sound;
+import PAD.sound.Speaker;
 
 /**
  * Handles a game and works as a base class for actual game modes
@@ -107,6 +109,13 @@ public abstract class GameHandler {
      */
     public void onCorrectPistonDownHook() {
         game.increasePoints(); // increases the points
+    }
+    
+    /**
+     * This gets called when the wrong piston has been pressed down in the game
+     */
+    public void onWrongPistonPressedHook() {
+        
     }
 
     /**

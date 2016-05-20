@@ -12,5 +12,6 @@ package PAD.interfaceKit.component;
 public interface ComponentAction {
     
     public void trigger();
+
     
 }

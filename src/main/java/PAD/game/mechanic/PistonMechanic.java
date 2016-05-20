@@ -5,6 +5,8 @@
  */
 package PAD.game.mechanic;
 
+import PAD.game.GameHandler;
+import PAD.game.GameStage;
 import PAD.main.task.tasks.ChangeReleasedPistonTask;
 import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.LinkedComponent;
@@ -12,6 +14,8 @@ import PAD.interfaceKit.component.ComponentHandler;
 import PAD.main.task.TaskManager;
 import PAD.main.task.tasks.CancelBlockedStateTask;
 import PAD.main.task.tasks.ChangeMagnetStateTask;
+import PAD.sound.Sound;
+import PAD.sound.Speaker;
 import java.util.ArrayList;
 
 /**
@@ -47,6 +51,15 @@ public class PistonMechanic {
                 new ChangeReleasedPistonTask(linkedComponent, 2),
                 new CancelBlockedStateTask(3)
         );
+    }
+    
+    /**
+     * Gets triggered once the wrong piston has been pressed down
+     */
+    public static void wrongPistonPressed() {
+            Speaker.play(Sound.TEST); // play a error sound
+            
+            GameHandler.getGame().getMode().getHandler().onWrongPistonPressedHook(); // calls a hook for the games (maybe to decrease points etc)
     }
 
     /**

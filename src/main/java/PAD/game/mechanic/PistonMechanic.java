@@ -11,6 +11,7 @@ import PAD.main.task.tasks.ChangeReleasedPistonTask;
 import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.LinkedComponent;
 import PAD.interfaceKit.component.ComponentHandler;
+import PAD.interfaceKit.io.output.LED.LedColor;
 import PAD.main.task.TaskManager;
 import PAD.main.task.tasks.CancelBlockedStateTask;
 import PAD.main.task.tasks.ChangeMagnetStateTask;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
  * Contains mechanics for the pistons
  *
  * @author Youri Dudock
+ * @author Bobbie
  */
 public class PistonMechanic {
 
@@ -30,6 +32,8 @@ public class PistonMechanic {
     private static final int TOTAL_PISTONS = ComponentHandler.getMagnet().getComponents().size(); // total amount of pistons based on amount of magnets
 
     private static boolean isReleaseBlocked = false; // if the releasing of new pistons is possible
+    
+    private static int ledRotationCount = 0; // rotation index of the led
 
     /**
      * Releases the piston by turning off a magnet
@@ -52,14 +56,36 @@ public class PistonMechanic {
                 new CancelBlockedStateTask(3)
         );
     }
-    
+
+    /**
+     * Gets called when the correct piston has been pressed down
+     */
+    public static void correctPistonPressed() {
+        Speaker.play(Sound.TEST); // play a sound
+
+        if (ledRotationCount  == 0) { 
+            ComponentHandler.getLed().turnOn(LedColor.RED);
+            ledRotationCount ++;
+        } else if (ledRotationCount  == 1) {
+            ComponentHandler.getLed().turnOn(LedColor.GREEN);
+            ledRotationCount ++;
+        } else if (ledRotationCount  == 2) {
+            ComponentHandler.getLed().turnOn(LedColor.BLUE);
+            ledRotationCount  = 0;
+        }
+
+        GameHandler.getGame().getMode().getHandler().onCorrectPistonDownHook();
+        
+        releasePiston(ComponentHandler.getRandomLinkedComponent());
+    }
+
     /**
      * Gets triggered once the wrong piston has been pressed down
      */
     public static void wrongPistonPressed() {
-            Speaker.play(Sound.TEST); // play a error sound
-            
-            GameHandler.getGame().getMode().getHandler().onWrongPistonPressedHook(); // calls a hook for the games (maybe to decrease points etc)
+        Speaker.play(Sound.TEST); // play a error sound
+
+        GameHandler.getGame().getMode().getHandler().onWrongPistonPressedHook(); // calls a hook for the games (maybe to decrease points etc)
     }
 
     /**

@@ -27,7 +27,7 @@ public class PressurePlateAction implements ComponentAction {
     private LinkedComponent linkedComponent;
 
     private int linkedComponentIndex;
-    private static int count = 0;
+    
     @Override
     public void trigger() {
         
@@ -51,29 +51,8 @@ public class PressurePlateAction implements ComponentAction {
                 return;
             }
            
-            if (GameHandler.getGame().getReleasedPiston().equals(linkedComponent)) {
-
-                Debugger.write("Correct pressure plate has been pressed with ID: " + (linkedComponentIndex + 1));
-                
-                GameHandler.getGame().getMode().getHandler().onCorrectPistonDownHook();
-
-                Speaker.play(Sound.TEST);
-                
-                
-                    if (count == 0 ) {
-                        ComponentHandler.getLed().turnOn(LedColor.RED);
-                        count++;
-                    }
-                    else if (count == 1 ) {
-                        ComponentHandler.getLed().turnOn(LedColor.GREEN);
-                        count++;
-                    }
-                    else if (count == 2 ) {
-                        ComponentHandler.getLed().turnOn(LedColor.BLUE);
-                        count = 0;
-                    }
-
-                PistonMechanic.releasePiston(ComponentHandler.getRandomLinkedComponent());
+            if (GameHandler.getGame().getReleasedPiston().equals(linkedComponent)) { // if the correct piston has been pressed down
+                PistonMechanic.correctPistonPressed();
             }
 
         }

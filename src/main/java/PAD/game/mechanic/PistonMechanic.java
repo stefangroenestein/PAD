@@ -62,15 +62,31 @@ public class PistonMechanic {
     public static void correctPistonPressed(ComponentSound componentSound) {
         Speaker.play(componentSound.getSound());
 
-        if (ledRotationCount  == 0) { 
-            ComponentHandler.getLed().turnOn(LedColor.RED);
-            ledRotationCount ++;
-        } else if (ledRotationCount  == 1) {
-            ComponentHandler.getLed().turnOn(LedColor.GREEN);
-            ledRotationCount ++;
-        } else if (ledRotationCount  == 2) {
-            ComponentHandler.getLed().turnOn(LedColor.BLUE);
-            ledRotationCount  = 0;
+        switch (ledRotationCount) {
+            case 0:
+                ComponentHandler.getLed().turnOn(LedColor.RED);
+                ledRotationCount ++;
+                break;
+            case 1:
+                ComponentHandler.getLed().turnOn(LedColor.GREEN);
+                ledRotationCount ++;
+                break;
+            case 2:
+                ComponentHandler.getLed().turnOn(LedColor.BLUE);
+                ledRotationCount ++;
+                break;
+            case 3:
+                ComponentHandler.getLed().turnOn(LedColor.PURPLE);
+                ledRotationCount ++;
+                break;
+            case 4:
+                ComponentHandler.getLed().turnOn(LedColor.YELLOW);
+                ledRotationCount ++;
+                break; 
+            case 5:
+                ComponentHandler.getLed().turnOn(LedColor.CYAN);
+                ledRotationCount = 0;
+                break; 
         }
 
         GameHandler.getGame().getMode().getHandler().onCorrectPistonDownHook();

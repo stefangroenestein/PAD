@@ -9,14 +9,9 @@ import PAD.main.debug.Debugger;
 import PAD.game.GameHandler;
 import PAD.game.GameStage;
 import PAD.game.mechanic.PistonMechanic;
-import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.ComponentAction;
-import PAD.interfaceKit.component.ComponentHandler;
+import PAD.interfaceKit.component.ComponentSound;
 import PAD.interfaceKit.component.LinkedComponent;
-import PAD.interfaceKit.io.output.LED.LedColor;
-import PAD.main.Main;
-import PAD.sound.Sound;
-import PAD.sound.Speaker;
 
 /**
  *
@@ -27,6 +22,10 @@ public class PressurePlateAction implements ComponentAction {
     private LinkedComponent linkedComponent;
 
     private int linkedComponentIndex;
+    
+    public PressurePlateAction(int linkedComponentIndex) {
+        this.linkedComponentIndex = linkedComponentIndex;
+    }
     
     @Override
     public void trigger() {
@@ -52,15 +51,11 @@ public class PressurePlateAction implements ComponentAction {
             }
            
             if (GameHandler.getGame().getReleasedPiston().equals(linkedComponent)) { // if the correct piston has been pressed down
-                PistonMechanic.correctPistonPressed();
+                PistonMechanic.correctPistonPressed(ComponentSound.values()[linkedComponentIndex]);
             }
 
         }
 
-    }
-
-    public PressurePlateAction(int linkedComponentIndex) {
-        this.linkedComponentIndex = linkedComponentIndex;
     }
 
 }

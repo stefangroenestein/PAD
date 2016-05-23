@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PAD.GUI.GUIController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PAD.GUI.GUIController">
    <children>
       <VBox prefHeight="200.0" prefWidth="600.0">
          <children>
@@ -37,24 +42,12 @@
                                           <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                        </padding>
                                        <children>
-                                          <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                            <buttons>
-                                              <Button fx:id="buttonMode1" mnemonicParsing="false" onAction="#startMode1" prefHeight="75.0" prefWidth="350.0" text="Start" />
-                                            </buttons>
-                                          </ButtonBar>
-                                          <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                            <buttons>
-                                              <Button fx:id="buttonMode2" mnemonicParsing="false" prefHeight="75.0" prefWidth="350.0" text="Start" />
-                                            </buttons>
-                                          </ButtonBar>
-                                          <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                                            <buttons>
-                                              <Button fx:id="buttonMode3" mnemonicParsing="false" prefHeight="75.0" prefWidth="350.0" text="Start" />
-                                            </buttons>
-                                          </ButtonBar>
+                                        <Button fx:id="buttonMode2" mnemonicParsing="false" prefHeight="75.0" prefWidth="350.0" text="Start" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                        <Button fx:id="buttonMode3" mnemonicParsing="false" prefHeight="75.0" prefWidth="350.0" text="Start" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                                           <Text fill="ORANGE" strokeType="OUTSIDE" strokeWidth="0.0" text="Game mode 1" wrappingWidth="143.6708984375" GridPane.rowIndex="1" />
                                           <Text fill="ORANGE" strokeType="OUTSIDE" strokeWidth="0.0" text="Game mode 2" GridPane.rowIndex="3" />
                                           <Text fill="ORANGE" strokeType="OUTSIDE" strokeWidth="0.0" text="Game mode 3" GridPane.rowIndex="5" />
+                                          <Button fx:id="buttonMode1" mnemonicParsing="false" onAction="#startMode1" prefHeight="75.0" prefWidth="350.0" text="Start" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>
                                  </children>

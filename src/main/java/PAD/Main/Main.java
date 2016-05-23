@@ -48,12 +48,10 @@ public class Main extends Application {
      * @throws java.lang.Exception
      */
     public static void main(String[] args) throws Exception {
-        initializeDB(); 
+       // initializeDB(); 
   
         KitConnector.initialize();
         launch(args);
-        
-        
     }
 	public static void initializeDB() {
 		try {

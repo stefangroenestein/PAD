@@ -7,10 +7,13 @@ package PAD.GUI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.jar.Attributes.Name;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * FXML Controller class
@@ -24,11 +27,25 @@ public class HighscoreController {
         @FXML
 	private TableColumn<Highscore, Integer> columnScore;
         
-@FXML
+        @FXML
+        private TableView<Highscore> highscoreTable;
+        
+            
+        private ObservableList<Highscore> tableContent = FXCollections.observableArrayList();
+
+        
+        @FXML
 	public void initialize() {
+                    tableContent.add(new Highscore(1, 1, "test"));
+            //ObservableList<Highscore> list = Highscore.getHighscoreData();
+            System.out.println("test");
+            
+            columnName.setCellValueFactory(new PropertyValueFactory<Highscore,String>("userName"));
+            columnScore.setCellValueFactory(new PropertyValueFactory<Highscore,Integer>("highscore"));
+
 		// Initialize the search table
-		columnName.setCellValueFactory(
-				cellData -> cellData.getValue().getUserName());
+		///columnName.setCellValueFactory(
+				//cellData -> cellData.getValue().getUserName());
 //		columnScore.setCellValueFactory(
 //				cellData -> cellData.getValue().getHighscore()); //hoe krijg ik dit int
 

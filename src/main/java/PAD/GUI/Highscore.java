@@ -58,18 +58,20 @@ public class Highscore {
 		 this.userName.set(userName);
 	}
 
-        	public ObservableList<Highscore> getHighscoreData() {
+        	public static ObservableList<Highscore> getHighscoreData() {
 		ObservableList<Highscore> highscoreData = FXCollections.observableArrayList();
 
 		try {
 			Statement statement = connection.createStatement();
-			ResultSet highscore = statement.executeQuery(" SELECT userName, highscore.scoreFROM user JOIN highscore on user.ID = highscore.user_ID order by highscore.score desc ");
+			ResultSet highscore = statement.executeQuery("SELECT userName, ID, highscore.score FROM user JOIN highscore on user.ID = highscore.user_ID order by highscore.score desc");
 
 			while (highscore.next()) {
 				highscoreData.add(new Highscore(
-						highscore.getInt("id"),
+						highscore.getInt("ID"),
 						highscore.getInt("score"),
 						highscore.getString("userName")));
+                                
+                       //         System.out.println("Id: " + highscoreData.)
 	
 			}
 		} catch (SQLException ex) {

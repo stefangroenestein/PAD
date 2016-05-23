@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PAD.GUI.GUIController">
+<AnchorPane id="AnchorPane" prefHeight="1306" prefWidth="845" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PAD.GUI.GUIController">
    <children>
       <VBox prefHeight="200.0" prefWidth="600.0">
          <children>
@@ -58,10 +58,10 @@
                            <content>
                               <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0">
                                  <children>
-                                    <TableView id="highscoreTable" opacity="0.45" prefHeight="400.0" prefWidth="601.0">
+                                    <TableView fx:id="highscoreTable" opacity="0.45" prefHeight="400.0" prefWidth="601.0">
                                       <columns>
-                                        <TableColumn id="tableName" prefWidth="302.0" text="Name" />
-                                        <TableColumn id="tableScore" minWidth="0.0" prefWidth="245.0" text="Score" />
+                                        <TableColumn fx:id="tableName" prefWidth="302.0" text="Name" />
+                                        <TableColumn fx:id="tableScore" minWidth="0.0" prefWidth="245.0" text="Score" />
                                       </columns>
                                     </TableView>
                                  </children>

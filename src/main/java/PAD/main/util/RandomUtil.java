@@ -5,6 +5,7 @@
  */
 package PAD.main.util;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -26,6 +27,10 @@ public class RandomUtil {
      */
     public static int getRandomInt(int max) {
         return randomGenerator.nextInt(max);
+    }
+    
+    public static Object getRandomItem(ArrayList<?> list) {
+        return list.get(randomGenerator.nextInt(list.size()));
     }
     
 }

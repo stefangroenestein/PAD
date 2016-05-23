@@ -15,11 +15,15 @@ public enum LedColor {
     
     RED(false,true,true),
     GREEN(true,false,true),
-    BLUE(true,true,false);
+    BLUE(true,true,false),
+    PURPLE(true, false, true),
+    ORANGE(true, true, false);
     
     private boolean LedColorRed; // name of the file
     private boolean LedColorGreen; // name of the file
     private boolean LedColorBlue; // name of the file
+    private boolean LedColorPurple; // name of the file
+    private boolean LedColorOrange; // name of the file
 
     private LedColor(boolean LedColorRed, boolean LedColorGreen, boolean LedColorBlue) {
         this.LedColorRed = LedColorRed;

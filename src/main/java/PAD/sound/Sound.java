@@ -16,7 +16,8 @@ public enum Sound {
     LION("lion"),
     KOALA("koala"),
     RHINO("rhino"),
-    BEAR("bear");
+    BEAR("bear"),
+    PLING("pling");
     
     private String fileName; // name of the file
     

@@ -16,6 +16,7 @@ import PAD.interfaceKit.io.output.LED.LedColor;
 import PAD.main.task.TaskManager;
 import PAD.main.task.tasks.CancelBlockedStateTask;
 import PAD.main.task.tasks.ChangeMagnetStateTask;
+import PAD.sound.Sound;
 import PAD.sound.Speaker;
 import java.util.ArrayList;
 
@@ -81,7 +82,7 @@ public class PistonMechanic {
      * Gets triggered once the wrong piston has been pressed down
      */
     public static void wrongPistonPressed() {
-       // Speaker.play(Sound.TEST); // play a error sound
+        Speaker.play(Sound.PLING); // play a error sound
 
         GameHandler.getGame().getMode().getHandler().onWrongPistonPressedHook(); // calls a hook for the games (maybe to decrease points etc)
     }

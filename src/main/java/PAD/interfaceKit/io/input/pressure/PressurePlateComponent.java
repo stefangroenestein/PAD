@@ -25,7 +25,7 @@ public class PressurePlateComponent extends ComponentHandler {
     
     private final int SENSOR_TRIGGER_VALUE = 1; // the total amount of pressure needed in order to perform a trigger action
     
-    private final int SENSOR_TRIGGER_VALUE_WRONG = 10; // if a wrong piston gets triggered this is the trigger value for it
+    private final int SENSOR_TRIGGER_VALUE_WRONG = 800; // if a wrong piston gets triggered this is the trigger value for it
 
     @Override
     public String getPrefix() {
@@ -44,7 +44,13 @@ public class PressurePlateComponent extends ComponentHandler {
         try { 
             int pressureValue = KitConnector.getKit().getSensorValue(component.getId()); // gets the pressure value of the pressure plate
             
+            if (component.equals(Component.PRESSURE_PLATE_FOUR)) {
+                System.out.println("Pressure value: " + pressureValue);
+            }
+            
             if (pressureValue >= SENSOR_TRIGGER_VALUE_WRONG) { // check if the wrong piston has been pressed
+                
+                
                 
                 if (GameHandler.getGame().getStage().equals(GameStage.RUNNING)) { // check if the game is running
                     if (!GameHandler.getGame().getReleasedPiston().getPressurePlate().equals(component)) { // check if the pressure plate is the wrong one

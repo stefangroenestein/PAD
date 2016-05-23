@@ -40,6 +40,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
 
         InterfaceHandler.open(InterfaceName.MAIN);
+
     }
     
 
@@ -48,7 +49,7 @@ public class Main extends Application {
      * @throws java.lang.Exception
      */
     public static void main(String[] args) throws Exception {
-       // initializeDB(); 
+        initializeDB(); 
   
         KitConnector.initialize();
         launch(args);

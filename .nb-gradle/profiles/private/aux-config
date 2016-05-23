@@ -4,16 +4,21 @@
   <auxiliary>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-      <group/>
-    </open-files>
-    <editor-bookmarks lastBookmarkId="0" xmlns="http://www.netbeans.org/ns/editor-bookmarks/2"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
       <group>
         <file>file:/C:/Users/Youri/Desktop/School/Projecten/PAD/src/main/java/PAD/interfaceKit/component/Component.java</file>
         <file>file:/C:/Users/Youri/Desktop/School/Projecten/PAD/src/main/java/PAD/Main/Controller.java</file>
         <file>file:/C:/Users/Youri/Desktop/School/Projecten/PAD/src/main/java/PAD/game/mechanic/PistonMechanic.java</file>
         <file>file:/C:/Users/Youri/Desktop/School/Projecten/PAD/src/main/java/PAD/interfaceKit/io/input/pressure/impl/PressurePlateAction.java</file>
         <file>file:/C:/Users/Youri/Desktop/School/Projecten/PAD/src/main/java/PAD/game/GameHandler.java</file>
+      </group>
+    </open-files>
+    <editor-bookmarks lastBookmarkId="0" xmlns="http://www.netbeans.org/ns/editor-bookmarks/2"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+      <group>
+        <file>file:/C:/Users/Youri/Desktop/School/Projecten/PAD/src/main/java/PAD/Main/Main.java</file>
+        <file>file:/C:/Users/Youri/Desktop/School/Projecten/PAD/src/main/java/PAD/Main/Controller.java</file>
+        <file>file:/C:/Users/Youri/Desktop/School/Projecten/PAD/src/main/java/PAD/GUI/GUIController.java</file>
+        <file>file:/C:/Users/Youri/Desktop/School/Projecten/PAD/</file>
       </group>
     </open-files>
   </auxiliary>

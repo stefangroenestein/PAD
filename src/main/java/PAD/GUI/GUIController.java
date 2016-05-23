@@ -50,20 +50,13 @@ public class GUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-     //   tableName.setCellValueFactory(new PropertyValueFactory<Highscore, String>("userName"));
-      //  tableScore.setCellValueFactory(new PropertyValueFactory<Highscore, Integer>("highscore"));
-        
-       // tableName.setCellValueFactory(new Callback<CellDataFeatures<Highscore, String>>, );
+        tableName.setCellValueFactory(new PropertyValueFactory<Highscore, String>("userName"));
+        tableScore.setCellValueFactory(new PropertyValueFactory<Highscore, Integer>("highscore"));
 
-     //   tableName.setCellFactory(new Callback<CellDataFeatures<Highscore, String>, ObservableValue<String>>() {
-    // public ObservableValue<String> call(CellDataFeatures<Highscore, String> p) {
-     //    return new ReadOnlyObjectWrapper(p.getValue().getFirstName());
-    // }
-  //});
 
-//        ObservableList<Highscore> list = Highscore.getHighscoreData();
+        ObservableList<Highscore> list = Highscore.getHighscoreData();
 
-    //    highscoreTable.setItems(list);
+       highscoreTable.setItems(list);
 
         buttonMode1.setOnAction(e -> {
             GameHandler.startGame(GameMode.NORMAL);

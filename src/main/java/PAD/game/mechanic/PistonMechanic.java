@@ -98,7 +98,7 @@ public class PistonMechanic {
      * Gets triggered once the wrong piston has been pressed down
      */
     public static void wrongPistonPressed() {
-        Speaker.play(Sound.PLING); // play a error sound
+       // Speaker.play(Sound.PLING); // play a error sound
 
         GameHandler.getGame().getMode().getHandler().onWrongPistonPressedHook(); // calls a hook for the games (maybe to decrease points etc)
     }

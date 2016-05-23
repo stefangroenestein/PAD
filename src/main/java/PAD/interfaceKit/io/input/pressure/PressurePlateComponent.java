@@ -44,14 +44,8 @@ public class PressurePlateComponent extends ComponentHandler {
         try { 
             int pressureValue = KitConnector.getKit().getSensorValue(component.getId()); // gets the pressure value of the pressure plate
             
-            if (component.equals(Component.PRESSURE_PLATE_FOUR)) {
-                System.out.println("Pressure value: " + pressureValue);
-            }
-            
             if (pressureValue >= SENSOR_TRIGGER_VALUE_WRONG) { // check if the wrong piston has been pressed
-                
-                
-                
+     
                 if (GameHandler.getGame().getStage().equals(GameStage.RUNNING)) { // check if the game is running
                     if (!GameHandler.getGame().getReleasedPiston().getPressurePlate().equals(component)) { // check if the pressure plate is the wrong one
                         PistonMechanic.wrongPistonPressed(); // trigger wrongPistonHook

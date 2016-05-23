@@ -11,11 +11,11 @@ import PAD.main.task.tasks.ChangeReleasedPistonTask;
 import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.LinkedComponent;
 import PAD.interfaceKit.component.ComponentHandler;
+import PAD.interfaceKit.component.ComponentSound;
 import PAD.interfaceKit.io.output.LED.LedColor;
 import PAD.main.task.TaskManager;
 import PAD.main.task.tasks.CancelBlockedStateTask;
 import PAD.main.task.tasks.ChangeMagnetStateTask;
-import PAD.sound.Sound;
 import PAD.sound.Speaker;
 import java.util.ArrayList;
 
@@ -57,11 +57,9 @@ public class PistonMechanic {
         );
     }
 
-    /**
-     * Gets called when the correct piston has been pressed down
-     */
-    public static void correctPistonPressed() {
-        Speaker.play(Sound.TEST); // play a sound
+    
+    public static void correctPistonPressed(ComponentSound componentSound) {
+        Speaker.play(componentSound.getSound());
 
         if (ledRotationCount  == 0) { 
             ComponentHandler.getLed().turnOn(LedColor.RED);
@@ -83,7 +81,7 @@ public class PistonMechanic {
      * Gets triggered once the wrong piston has been pressed down
      */
     public static void wrongPistonPressed() {
-        Speaker.play(Sound.TEST); // play a error sound
+       // Speaker.play(Sound.TEST); // play a error sound
 
         GameHandler.getGame().getMode().getHandler().onWrongPistonPressedHook(); // calls a hook for the games (maybe to decrease points etc)
     }

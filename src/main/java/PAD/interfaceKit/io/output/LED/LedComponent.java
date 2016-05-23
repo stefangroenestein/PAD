@@ -10,7 +10,7 @@ import PAD.interfaceKit.component.ComponentHandler;
 
 /**
  *
- * @author Roosie
+ * @author Bobbie
  */
 public class LedComponent extends ComponentHandler{
 

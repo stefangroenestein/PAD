@@ -36,7 +36,7 @@ public class Speaker {
                 clip.stop(); // stops playing the previous audio file
             }
 
-            stream = AudioSystem.getAudioInputStream(new File(sound.getFileName() + ".wav")); // reads the audio file
+            stream = AudioSystem.getAudioInputStream(new File("resources/" + sound.getFileName() + ".wav")); // reads the audio file
 
             clip = AudioSystem.getClip(); // gets the audio clip from the stream
 

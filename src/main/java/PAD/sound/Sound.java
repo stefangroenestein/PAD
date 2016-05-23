@@ -12,7 +12,11 @@ package PAD.sound;
  */
 public enum Sound {
     
-    TEST("test");
+    DOG("dog"),
+    LION("lion"),
+    KOALA("koala"),
+    RHINO("rhino"),
+    BEAR("bear");
     
     private String fileName; // name of the file
     

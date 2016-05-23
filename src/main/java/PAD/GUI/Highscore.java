@@ -9,6 +9,8 @@ import static PAD.main.Main.connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -51,11 +53,12 @@ public class Highscore {
         return userName;
     }
     
+    
     	public void setUserName(String userName) {
 		 this.userName.set(userName);
 	}
 
-        	public  ObservableList<Highscore> getHighscoreData() {
+        	public ObservableList<Highscore> getHighscoreData() {
 		ObservableList<Highscore> highscoreData = FXCollections.observableArrayList();
 
 		try {

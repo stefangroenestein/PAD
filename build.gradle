@@ -26,4 +26,7 @@ repositories {
 
 dependencies {
     compile name: 'phidget21'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.2'
+
+    //compile files('lib/mysql-connector-java-5.1.39-bin')
 }

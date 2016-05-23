@@ -5,27 +5,19 @@
  */
 package PAD.main;
 
+import PAD.GUI.Highscore;
 import PAD.GUI.InterfaceHandler;
 import PAD.GUI.InterfaceName;
 
-import PAD.game.GameHandler;
-import PAD.game.GameMode;
 import PAD.interfaceKit.KitConnector;
-import PAD.sound.Sound;
-import PAD.sound.Speaker;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.collections.ObservableList;
 import javafx.stage.Stage;
 
 /**
@@ -38,7 +30,7 @@ public class Main extends Application {
     	private static final String dbHost = "localhost";   //select host name
 	private static final String dbTable = "pad_sss02"; //db schema name
 	private static final String dbUser = "root";        // db username
-	private static final String dbPassword = "Hyper21"; // db password
+	private static final String dbPassword = "root"; // db password
     
     public static Connection connection;
     
@@ -56,7 +48,6 @@ public class Main extends Application {
      * @throws java.lang.Exception
      */
     public static void main(String[] args) throws Exception {
-        // TODO code application logic here
         initializeDB(); 
   
         KitConnector.initialize();
@@ -68,17 +59,11 @@ public class Main extends Application {
 		try {
 			// Load the JDBC driver
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
+                        connection = DriverManager.getConnection("jdbc:mysql://" + dbHost + "/" + dbTable + "?autoreconnect=true?db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", dbUser, dbPassword);
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
 			System.err.println(ex);
-		}
-
-		try {
-			// Establish a connection
-			connection = DriverManager.getConnection("jdbc:mysql://" + dbHost + "/" + dbTable + "?autoreconnect=true", dbUser, dbPassword);
 		} catch (SQLException ex) {
-			System.err.println("SQLException: " + ex.getMessage());
-			System.err.println("SQLState: " + ex.getSQLState());
-			System.err.println("VendorError: " + ex.getErrorCode());
-		}
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
 	}
 }

@@ -7,12 +7,17 @@ package PAD.main;
 
 import PAD.GUI.InterfaceHandler;
 import PAD.GUI.InterfaceName;
+
 import PAD.game.GameHandler;
 import PAD.game.GameMode;
 import PAD.interfaceKit.KitConnector;
 import PAD.sound.Sound;
 import PAD.sound.Speaker;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -30,6 +35,13 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
     
+    	private static final String dbHost = "localhost";   //select host name
+	private static final String dbTable = "pad_sss02"; //db schema name
+	private static final String dbUser = "root";        // db username
+	private static final String dbPassword = "Hyper21"; // db password
+    
+    public static Connection connection;
+    
     public static Controller controller = new Controller();
     
     @Override
@@ -45,12 +57,28 @@ public class Main extends Application {
      */
     public static void main(String[] args) throws Exception {
         // TODO code application logic here
-        
-                
-         KitConnector.initialize();
+        initializeDB(); 
+  
+        KitConnector.initialize();
         launch(args);
         
         
     }
+	public static void initializeDB() {
+		try {
+			// Load the JDBC driver
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+			System.err.println(ex);
+		}
 
+		try {
+			// Establish a connection
+			connection = DriverManager.getConnection("jdbc:mysql://" + dbHost + "/" + dbTable + "?autoreconnect=true", dbUser, dbPassword);
+		} catch (SQLException ex) {
+			System.err.println("SQLException: " + ex.getMessage());
+			System.err.println("SQLState: " + ex.getSQLState());
+			System.err.println("VendorError: " + ex.getErrorCode());
+		}
+	}
 }

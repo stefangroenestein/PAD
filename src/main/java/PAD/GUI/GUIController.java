@@ -70,6 +70,11 @@ public class GUIController implements Initializable {
             GameHandler.startGame(GameMode.TIMED_EASY);
 
         });
+        
+        buttonMode3.setOnAction(e -> {
+            GameHandler.stopGame();
+
+        });
 
 
         new Thread(controller).start();

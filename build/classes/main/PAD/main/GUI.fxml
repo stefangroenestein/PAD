@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="1306" prefWidth="845" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PAD.GUI.GUIController">
+<AnchorPane id="AnchorPane" prefHeight="500" prefWidth="600" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PAD.GUI.GUIController">
    <children>
       <VBox prefHeight="200.0" prefWidth="600.0">
          <children>
@@ -43,10 +43,10 @@
                                        </padding>
                                        <children>
                                         <Button fx:id="buttonMode2" mnemonicParsing="false" prefHeight="75.0" prefWidth="350.0" text="Start" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                        <Button fx:id="buttonMode3" mnemonicParsing="false" prefHeight="75.0" prefWidth="350.0" text="Start" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                          <Text fill="ORANGE" strokeType="OUTSIDE" strokeWidth="0.0" text="Game mode 1" wrappingWidth="143.6708984375" GridPane.rowIndex="1" />
-                                          <Text fill="ORANGE" strokeType="OUTSIDE" strokeWidth="0.0" text="Game mode 2" GridPane.rowIndex="3" />
-                                          <Text fill="ORANGE" strokeType="OUTSIDE" strokeWidth="0.0" text="Game mode 3" GridPane.rowIndex="5" />
+                                        <Button fx:id="buttonMode3" mnemonicParsing="false" prefHeight="75.0" prefWidth="350.0" text="Stop" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                          <Text fill="ORANGE" strokeType="OUTSIDE" strokeWidth="0.0" text="Unlimited mode" wrappingWidth="143.6708984375" GridPane.rowIndex="1" />
+                                          <Text fill="ORANGE" strokeType="OUTSIDE" strokeWidth="0.0" text="30 Seconds mode" GridPane.rowIndex="3" />
+                                          <Text fill="ORANGE" strokeType="OUTSIDE" strokeWidth="0.0" text="" GridPane.rowIndex="5" />
                                           <Button fx:id="buttonMode1" mnemonicParsing="false" onAction="#startMode1" prefHeight="75.0" prefWidth="350.0" text="Start" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>

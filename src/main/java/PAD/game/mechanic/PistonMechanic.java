@@ -34,7 +34,7 @@ public class PistonMechanic {
 
     private static boolean isReleaseBlocked = false; // if the releasing of new pistons is possible
     
-    private static int ledRotationCount = 0; // rotation index of the led
+    private static int ledRotationCount = 1; // rotation index of the led
 
     /**
      * Releases the piston by turning off a magnet
@@ -63,10 +63,6 @@ public class PistonMechanic {
         Speaker.play(componentSound.getSound());
 
         switch (ledRotationCount) {
-            case 0:
-                ComponentHandler.getLed().turnOn(LedColor.RED);
-                ledRotationCount ++;
-                break;
             case 1:
                 ComponentHandler.getLed().turnOn(LedColor.GREEN);
                 ledRotationCount ++;
@@ -85,7 +81,7 @@ public class PistonMechanic {
                 break; 
             case 5:
                 ComponentHandler.getLed().turnOn(LedColor.CYAN);
-                ledRotationCount = 0;
+                ledRotationCount = 1;
                 break; 
         }
 

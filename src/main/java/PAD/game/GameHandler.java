@@ -9,6 +9,7 @@ import PAD.main.debug.Debugger;
 import PAD.game.mechanic.PistonMechanic;
 import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.ComponentHandler;
+import PAD.interfaceKit.io.output.LED.LedColor;
 import PAD.sound.Sound;
 import PAD.sound.Speaker;
 
@@ -94,6 +95,10 @@ public abstract class GameHandler {
         game.setStage(GameStage.FINISHED); // sets the stage to finished
 
         game.getTimer().stop(); // stops the timer
+        
+        ComponentHandler.getLed().turnOn(LedColor.RED);
+        
+        ComponentHandler.getMagnet().setMagnets(false);
 
         Debugger.write("Game has finished! Points: " + game.getPoints() + " Time played: " + game.getTimer().getSeconds() + " seconds");
     }

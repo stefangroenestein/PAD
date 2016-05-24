@@ -38,7 +38,7 @@ public class HighscoreController {
 	public void initialize() {
                     tableContent.add(new Highscore(1, 1, "test"));
             //ObservableList<Highscore> list = Highscore.getHighscoreData();
-            System.out.println("test");
+           
             
             columnName.setCellValueFactory(new PropertyValueFactory<Highscore,String>("userName"));
             columnScore.setCellValueFactory(new PropertyValueFactory<Highscore,Integer>("highscore"));

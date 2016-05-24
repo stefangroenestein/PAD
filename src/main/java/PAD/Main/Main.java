@@ -26,43 +26,43 @@ import javafx.stage.Stage;
  * @author <Stefan Groenestein, IT102, 500726588>
  */
 public class Main extends Application {
-    
-    	private static final String dbHost = "localhost";   //select host name
-	private static final String dbTable = "pad_sss02"; //db schema name
-	private static final String dbUser = "root";        // db username
-	private static final String dbPassword = "root"; // db password
-    
+
+    private static final String dbHost = "localhost";   //select host name
+    private static final String dbTable = "pad_sss02"; //db schema name
+    private static final String dbUser = "root";        // db username
+    private static final String dbPassword = "root"; // db password
+
     public static Connection connection;
-    
+
     public static Controller controller = new Controller();
-    
+
     @Override
     public void start(Stage stage) throws IOException {
 
         InterfaceHandler.open(InterfaceName.MAIN);
 
     }
-    
 
     /**
      * @param args the command line arguments
      * @throws java.lang.Exception
      */
     public static void main(String[] args) throws Exception {
-        initializeDB(); 
-  
+        initializeDB();
+
         KitConnector.initialize();
         launch(args);
     }
-	public static void initializeDB() {
-		try {
-			// Load the JDBC driver
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        connection = DriverManager.getConnection("jdbc:mysql://" + dbHost + "/" + dbTable + "?autoreconnect=true?db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", dbUser, dbPassword);
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
-			System.err.println(ex);
-		} catch (SQLException ex) {
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                }
-	}
+
+    public static void initializeDB() {
+        try {
+            // Load the JDBC driver
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            connection = DriverManager.getConnection("jdbc:mysql://" + dbHost + "/" + dbTable + "?autoreconnect=true?db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", dbUser, dbPassword);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+            System.err.println(ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

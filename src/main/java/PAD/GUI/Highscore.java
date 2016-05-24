@@ -45,6 +45,12 @@ public class Highscore {
     public IntegerProperty getHighscore() {
         return highscore;
     }
+    
+    public StringProperty getConvertedHighscores() {
+        StringProperty property = new SimpleStringProperty(String.valueOf(highscore.get()));
+        
+        return property;
+    }
 
     	public void setHighscore(Integer highscore) {
 		this.highscore.set(highscore);

@@ -51,7 +51,7 @@ public class Main extends Application {
     public static void main(String[] args) throws Exception {
         initializeDB(); 
   
-        KitConnector.initialize();
+       // KitConnector.initialize();
         launch(args);
     }
 	public static void initializeDB() {

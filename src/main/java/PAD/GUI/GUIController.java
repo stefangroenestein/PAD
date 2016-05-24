@@ -39,7 +39,7 @@ public class GUIController implements Initializable {
     @FXML
     private TableColumn<Highscore, String> tableName;
     @FXML
-    private TableColumn<Highscore, Integer> tableScore;
+    private TableColumn<Highscore, String> tableScore;
 
     @FXML
     private TableView<Highscore> highscoreTable;
@@ -50,13 +50,16 @@ public class GUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        tableName.setCellValueFactory(new PropertyValueFactory<Highscore, String>("userName"));
-        tableScore.setCellValueFactory(new PropertyValueFactory<Highscore, Integer>("highscore"));
+        //tableName.setCellValueFactory(new PropertyValueFactory<Highscore, String>("userName"));
+        //tableScore.setCellValueFactory(new PropertyValueFactory<Highscore, Integer>("highscore"));
+        
+        tableName.setCellValueFactory(cellData -> cellData.getValue().getUserName());
+        tableScore.setCellValueFactory(cellData -> cellData.getValue().getConvertedHighscores());
 
 
         ObservableList<Highscore> list = Highscore.getHighscoreData();
 
-       highscoreTable.setItems(list);
+        highscoreTable.setItems(list);
 
         buttonMode1.setOnAction(e -> {
             GameHandler.startGame(GameMode.NORMAL);
@@ -68,8 +71,7 @@ public class GUIController implements Initializable {
 
         });
 
-        //tableName.setCellValueFactory(new PropertyValueFactory<Highscore,String>("userName"));
-        //tableScore.setCellValueFactory(new PropertyValueFactory<Highscore,Integer>("highscore"));
+
         new Thread(controller).start();
     }
 

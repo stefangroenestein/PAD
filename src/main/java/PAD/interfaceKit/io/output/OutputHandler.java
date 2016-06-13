@@ -10,14 +10,15 @@ import PAD.interfaceKit.io.IOController;
 import PAD.interfaceKit.io.IOType;
 
 /**
- *
+ * Deals with output components
+ * 
  * @author Youri Dudock
  */
 public class OutputHandler extends IOController {
     
     @Override
     public void onPulse(IOType type) {
-        ComponentHandler.getMagnet().process(type);
+        ComponentHandler.getMagnet().process(type); // process output for magnets (this line also does it for other output components)
     }
     
 }

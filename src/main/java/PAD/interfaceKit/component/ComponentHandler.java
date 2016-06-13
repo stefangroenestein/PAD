@@ -6,7 +6,6 @@
 package PAD.interfaceKit.component;
 
 import PAD.main.debug.Debugger;
-import PAD.game.GameHandler;
 import PAD.interfaceKit.KitConnector;
 import PAD.interfaceKit.io.IOType;
 import PAD.interfaceKit.io.input.button.ButtonComponent;
@@ -20,9 +19,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * A parent for all the input component, this class will progress and read input
- * components every new input component should extend this class in order to be
- * read
+ * A super class for all the input & output components for this application a
+ * new type of component should make use of this class
  *
  * @author Youri Dudock
  * @author Bobbie hondeveld
@@ -35,14 +33,18 @@ public abstract class ComponentHandler {
 
     private static PressurePlateComponent pressurePlateComponent = new PressurePlateComponent(); // the pressure plate component child
 
-    private static MagnetComponent magnetComponent = new MagnetComponent();
-    
-    private static LedComponent ledComponent = new LedComponent();
+    private static MagnetComponent magnetComponent = new MagnetComponent(); // the magnet component child
 
-    public static void initialize() { // inits the childs and sets the component
+    private static LedComponent ledComponent = new LedComponent(); // the led component child
+
+    /**
+     * Inits the childs and sets the component in the parent
+     */
+    public static void initialize() {
         ComponentHandler.getButton().setComponents();
         ComponentHandler.getPressurePlate().setComponents();
         ComponentHandler.getMagnet().setComponents();
+        ComponentHandler.getLed().setComponents();
     }
 
     /**
@@ -58,12 +60,16 @@ public abstract class ComponentHandler {
         }
     }
 
-    
+    /**
+     * Processes input by reading and processes output by setting
+     *
+     * @param type the type of IO
+     */
     public void process(IOType type) {
         switch (type) {
 
             case INPUT:
-                for (Component component : components) {
+                for (Component component : components) { // loops trough all the components that belong with this type of component
 
                     if (getState(component)) {
                         component.doAction(); // if there is any new input perform the action with it
@@ -72,14 +78,14 @@ public abstract class ComponentHandler {
                 break;
 
             case OUTPUT:
-                while (ComponentQueue.hasNext()) {
+                while (ComponentQueue.hasNext()) { // checks if the queue has items left
 
                     try {
-                        QueuedComponent queuedComponent = ComponentQueue.getNext();
-                        
+                        QueuedComponent queuedComponent = ComponentQueue.getNext(); // gets the next item in the queue
+
                         Debugger.write("Activate " + queuedComponent.getComponent().toString() + " / id: " + queuedComponent.getComponent().getId() + " / state " + queuedComponent.getState());
-                        
-                        KitConnector.getKit().setOutputState(queuedComponent.getComponent().getId(), queuedComponent.getState());
+
+                        KitConnector.getKit().setOutputState(queuedComponent.getComponent().getId(), queuedComponent.getState()); // outputs the queued component
 
                     } catch (PhidgetException ex) {
                         Logger.getLogger(ComponentHandler.class.getName()).log(Level.SEVERE, null, ex);
@@ -91,16 +97,16 @@ public abstract class ComponentHandler {
     }
 
     /**
-     * Gets a random linked component
+     * Grabs a random linked component from our linked component enum
      *
-     * @return a random linked component
+     * @return a linked component
      */
     public static LinkedComponent getRandomLinkedComponent() {
-        LinkedComponent linkedComponent = LinkedComponent.values()[(RandomUtil.getRandomInt(LinkedComponent.values().length))];
-        
+        LinkedComponent linkedComponent = LinkedComponent.values()[(RandomUtil.getRandomInt(LinkedComponent.values().length))]; // gets a random int that is within the range of the size of the enum
+
         Debugger.write("Obtained a new linked component: " + linkedComponent.name());
-        
-        return LinkedComponent.values()[(RandomUtil.getRandomInt(LinkedComponent.values().length))];
+
+        return linkedComponent;
     }
 
     /**
@@ -108,12 +114,19 @@ public abstract class ComponentHandler {
      *
      * @param component the component which is being read
      *
-     * @return true if the component is being activated
+     * @return true if the component is being activated (triggered)
      */
     public boolean getState(Component component) {
         return false;
     }
 
+    /**
+     * Places the component and its new state to the queue for processing
+     *
+     * @param component the component which is being set
+     *
+     * @param state the new state of this component
+     */
     public static void setState(Component component, boolean state) {
         ComponentQueue.add(component, state);
     }
@@ -148,9 +161,9 @@ public abstract class ComponentHandler {
     public static MagnetComponent getMagnet() {
         return magnetComponent;
     }
-    
+
     /**
-     * 
+     *
      * @return the led component 'handler'
      */
     public static LedComponent getLed() {

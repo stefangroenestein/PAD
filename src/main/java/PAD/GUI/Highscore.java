@@ -23,69 +23,69 @@ import javafx.collections.ObservableList;
  * @author max
  */
 public class Highscore {
-     private final IntegerProperty id, highscore;
-	private final StringProperty userName;
-        
-        public Highscore(Integer id, Integer highscore, String userName){
-            
-            this.id = new SimpleIntegerProperty(id);
-            this.highscore = new SimpleIntegerProperty(highscore);
-            this.userName = new SimpleStringProperty(userName);
-        
-        }
+
+    private final IntegerProperty id, highscore;
+    private final StringProperty userName;
+
+    public Highscore(Integer id, Integer highscore, String userName) {
+
+        this.id = new SimpleIntegerProperty(id);
+        this.highscore = new SimpleIntegerProperty(highscore);
+        this.userName = new SimpleStringProperty(userName);
+
+    }
 
     public IntegerProperty getId() {
         return id;
     }
-    
-    	public void setId(Integer id) {
-		this.id.set(id);
-	}
+
+    public void setId(Integer id) {
+        this.id.set(id);
+    }
 
     public IntegerProperty getHighscore() {
         return highscore;
     }
-    
+
     public StringProperty getConvertedHighscores() {
         StringProperty property = new SimpleStringProperty(String.valueOf(highscore.get()));
-        
+
         return property;
     }
 
-    	public void setHighscore(Integer highscore) {
-		this.highscore.set(highscore);
-	}
+    public void setHighscore(Integer highscore) {
+        this.highscore.set(highscore);
+    }
+
     public StringProperty getUserName() {
         return userName;
     }
-    
-    
-    	public void setUserName(String userName) {
-		 this.userName.set(userName);
-	}
 
-        	public static ObservableList<Highscore> getHighscoreData() {
-		ObservableList<Highscore> highscoreData = FXCollections.observableArrayList();
+    public void setUserName(String userName) {
+        this.userName.set(userName);
+    }
 
-		try {
-			Statement statement = connection.createStatement();
-			ResultSet highscore = statement.executeQuery("SELECT userName, ID, highscore.score FROM user JOIN highscore on user.ID = highscore.user_ID order by highscore.score desc");
+    public static ObservableList<Highscore> getHighscoreData() {
+        ObservableList<Highscore> highscoreData = FXCollections.observableArrayList();
 
-			while (highscore.next()) {
-				highscoreData.add(new Highscore(
-						highscore.getInt("ID"),
-						highscore.getInt("score"),
-						highscore.getString("userName")));
-                                
-                       //         System.out.println("Id: " + highscoreData.)
-	
-			}
-		} catch (SQLException ex) {
-			System.err.println(ex);
-		}
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet highscore = statement.executeQuery("SELECT userName, ID, highscore.score FROM user JOIN highscore on user.ID = highscore.user_ID order by highscore.score desc");
 
-		return highscoreData;
-	}
+            while (highscore.next()) {
+                highscoreData.add(new Highscore(
+                        highscore.getInt("ID"),
+                        highscore.getInt("score"),
+                        highscore.getString("userName")));
+
+                //         System.out.println("Id: " + highscoreData.)
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+
+        return highscoreData;
+    }
 
     public void getScore() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

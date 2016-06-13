@@ -18,9 +18,8 @@ public class TaskManager {
 
     /**
      * Starts one or more new tasks
-     * 
-     * @param tasks
-     *             A list with tasks
+     *
+     * @param tasks A list with tasks
      */
     public static void start(Task... tasks) {
         for (Task task : tasks) {
@@ -56,7 +55,7 @@ public class TaskManager {
             }
         }
 
-        tasks = tasksLeft;
+        tasks = tasksLeft; // replaces the active task list
     }
 
 }

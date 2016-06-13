@@ -9,28 +9,34 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Contains function to handle random 
+ * Contains function to handle random
  *
  * @author Youri Dudock
  */
 public class RandomUtil {
-    
+
     private static Random randomGenerator = new Random(); // a random instance, static for the whole program
-    
+
     /**
      * A random int from 0 to x
-     * 
-     * @param max
-     *          the max range
-     * 
-     * @return a random int 
+     *
+     * @param max the max range
+     *
+     * @return a random int
      */
     public static int getRandomInt(int max) {
         return randomGenerator.nextInt(max);
     }
-    
+
+    /**
+     * Gets a random object from a array list of any type
+     *
+     * @param list a list with objects
+     *
+     * @return a random item from the array list
+     */
     public static Object getRandomItem(ArrayList<?> list) {
         return list.get(randomGenerator.nextInt(list.size()));
     }
-    
+
 }

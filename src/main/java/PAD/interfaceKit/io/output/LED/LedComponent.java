@@ -9,15 +9,24 @@ import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.ComponentHandler;
 
 /**
+ * Functions for the led component
  *
  * @author Bobbie
  */
-public class LedComponent extends ComponentHandler{
+public class LedComponent extends ComponentHandler {
+    
+    private final String LED_PREFIX = "LIGHT_"; // the identifier to find the led in the component enum
 
     @Override
     public String getPrefix() {
-        return "LIGHT_";
+        return LED_PREFIX;
     }
+    
+    /**
+     * Turns on the led
+     * 
+     * @param color the color the led should be
+     */
     public void turnOn(LedColor color){
         ComponentHandler.setState(Component.LIGHT_RED, color.getColorRed());
         ComponentHandler.setState(Component.LIGHT_GREEN, color.getColorGreen());

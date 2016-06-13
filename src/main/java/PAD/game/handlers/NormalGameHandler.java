@@ -8,6 +8,7 @@ package PAD.game.handlers;
 import PAD.game.GameHandler;
 
 /**
+ * The handler of a normal game
  *
  * @author Youri Dudock
  */

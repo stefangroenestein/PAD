@@ -6,12 +6,13 @@
 package PAD.interfaceKit.component;
 
 /**
+ * Base class for component actions
  *
  * @author Youri Dudock
  */
 public interface ComponentAction {
     
-    public void trigger();
+    public void trigger(); // the function that happends after a trigger
 
     
 }

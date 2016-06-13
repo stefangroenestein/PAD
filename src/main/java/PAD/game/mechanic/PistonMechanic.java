@@ -6,7 +6,6 @@
 package PAD.game.mechanic;
 
 import PAD.game.GameHandler;
-import PAD.game.GameStage;
 import PAD.main.task.tasks.ChangeReleasedPistonTask;
 import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.LinkedComponent;
@@ -16,7 +15,6 @@ import PAD.interfaceKit.io.output.LED.LedColor;
 import PAD.main.task.TaskManager;
 import PAD.main.task.tasks.CancelBlockedStateTask;
 import PAD.main.task.tasks.ChangeMagnetStateTask;
-import PAD.sound.Sound;
 import PAD.sound.Speaker;
 import java.util.ArrayList;
 
@@ -33,7 +31,7 @@ public class PistonMechanic {
     private static final int TOTAL_PISTONS = ComponentHandler.getMagnet().getComponents().size(); // total amount of pistons based on amount of magnets
 
     private static boolean isReleaseBlocked = false; // if the releasing of new pistons is possible
-    
+
     private static int ledRotationCount = 1; // rotation index of the led
 
     /**
@@ -58,44 +56,46 @@ public class PistonMechanic {
         );
     }
 
-    
+    /**
+     * If the correct piston has been pressed down this method gets called
+     *
+     * @param componentSound the sound that belongs with the component
+     */
     public static void correctPistonPressed(ComponentSound componentSound) {
-        Speaker.play(componentSound.getSound());
+        Speaker.play(componentSound.getSound()); // plays the sound
 
-        switch (ledRotationCount) {
+        switch (ledRotationCount) { // switches trough the color schema
             case 1:
                 ComponentHandler.getLed().turnOn(LedColor.GREEN);
-                ledRotationCount ++;
+                ledRotationCount++;
                 break;
             case 2:
                 ComponentHandler.getLed().turnOn(LedColor.BLUE);
-                ledRotationCount ++;
+                ledRotationCount++;
                 break;
             case 3:
                 ComponentHandler.getLed().turnOn(LedColor.PURPLE);
-                ledRotationCount ++;
+                ledRotationCount++;
                 break;
             case 4:
                 ComponentHandler.getLed().turnOn(LedColor.YELLOW);
-                ledRotationCount ++;
-                break; 
+                ledRotationCount++;
+                break;
             case 5:
                 ComponentHandler.getLed().turnOn(LedColor.CYAN);
                 ledRotationCount = 1;
-                break; 
+                break;
         }
 
-        GameHandler.getGame().getMode().getHandler().onCorrectPistonDownHook();
-        
-        releasePiston(ComponentHandler.getRandomLinkedComponent());
+        GameHandler.getGame().getMode().getHandler().onCorrectPistonDownHook(); // calls a ingame hook
+
+        releasePiston(ComponentHandler.getRandomLinkedComponent()); // releases a new random piston
     }
 
     /**
      * Gets triggered once the wrong piston has been pressed down
      */
     public static void wrongPistonPressed() {
-       // Speaker.play(Sound.PLING); // play a error sound
-
         GameHandler.getGame().getMode().getHandler().onWrongPistonPressedHook(); // calls a hook for the games (maybe to decrease points etc)
     }
 

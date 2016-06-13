@@ -12,6 +12,7 @@ package PAD.interfaceKit.io;
  */
 public enum IOType {
     
-    INPUT, OUTPUT;
+    INPUT, // buttons, pressure plates, etc
+    OUTPUT; // magnets, leds, etc
     
 }

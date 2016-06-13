@@ -16,15 +16,29 @@ public class QueuedComponent {
     
     private boolean state; // the state of which the component should be in
     
+    /**
+     * Constructor for this component
+     * 
+     * @param component the component in the queue
+     * @param state the new state of this component
+     */
     public QueuedComponent(Component component, boolean state) {
         this.component = component;
         this.state = state;
     }
 
+    /**
+     * 
+     * @return the component in this queued component
+     */
     public Component getComponent() {
         return component;
     }
 
+    /**
+     * 
+     * @return the new state of this component
+     */
     public boolean getState() {
         return state;
     }

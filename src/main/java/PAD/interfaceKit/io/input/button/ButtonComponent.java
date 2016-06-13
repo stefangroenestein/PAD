@@ -11,7 +11,6 @@ import PAD.interfaceKit.component.ComponentHandler;
 import com.phidgets.PhidgetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.ArrayList;
 
 /**
  * Deals with button components
@@ -19,9 +18,9 @@ import java.util.ArrayList;
  * @author Youri Dudock
  */
 public class ButtonComponent extends ComponentHandler {
-    
-    private final String BUTTON_PREFIX = "BUTTON_";
-    
+
+    private final String BUTTON_PREFIX = "BUTTON_"; // the prefix for buttons in the component enum
+
     @Override
     public String getPrefix() {
         return BUTTON_PREFIX;
@@ -36,5 +35,5 @@ public class ButtonComponent extends ComponentHandler {
             return false;
         }
     }
-    
+
 }

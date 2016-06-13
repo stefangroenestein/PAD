@@ -12,7 +12,6 @@ import PAD.interfaceKit.KitConnector;
 import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.ComponentHandler;
 import PAD.main.debug.Debugger;
-import com.phidgets.PhidgetException;
 
 /**
  * Deals with the pressure plate component, a pressure plates gives us a value of the amount of pressure on it

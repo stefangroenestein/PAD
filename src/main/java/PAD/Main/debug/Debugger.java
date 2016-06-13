@@ -8,7 +8,7 @@ package PAD.main.debug;
 /**
  * Deals with the debugging of info
  *
- * @author Youri
+ * @author Youri Dudock
  */
 public class Debugger {
     

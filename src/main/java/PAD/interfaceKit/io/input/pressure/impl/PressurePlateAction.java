@@ -14,27 +14,36 @@ import PAD.interfaceKit.component.ComponentSound;
 import PAD.interfaceKit.component.LinkedComponent;
 
 /**
+ * The pressure plate action
  *
  * @author Youri Dudock
  */
 public class PressurePlateAction implements ComponentAction {
 
-    private LinkedComponent linkedComponent;
+    private LinkedComponent linkedComponent; // the linked component which selects the magnet and pressure plate of the piston
 
-    private int linkedComponentIndex;
-    
+    private int linkedComponentIndex; // the index of the linked component in the enum
+
+    /**
+     * Constructor for this action
+     *
+     * @param linkedComponentIndex the index in the linked component enum
+     */
     public PressurePlateAction(int linkedComponentIndex) {
         this.linkedComponentIndex = linkedComponentIndex;
     }
-    
+
+    /**
+     * Gets called when the action is triggered
+     */
     @Override
     public void trigger() {
-        
-        if (PistonMechanic.isReleaseBlocked()) {
+
+        if (PistonMechanic.isReleaseBlocked()) { // we cannot do any action if we are release blocked
             return;
         }
-        
-        linkedComponent = LinkedComponent.values()[linkedComponentIndex];
+
+        linkedComponent = LinkedComponent.values()[linkedComponentIndex]; // gets the linked component by using the index
 
         if (GameHandler.getGame().getStage().equals(GameStage.WAITING_FOR_PISTON)) { // if the game is waiting for the pistons to be pressed down
 
@@ -44,14 +53,14 @@ public class PressurePlateAction implements ComponentAction {
                 Debugger.write("Pressure plate added to list with id: " + linkedComponent.getPressurePlate().getId());
             }
 
-        } else if (GameHandler.getGame().getStage().equals(GameStage.RUNNING)) {
+        } else if (GameHandler.getGame().getStage().equals(GameStage.RUNNING)) { // if the game is running
 
             if (GameHandler.getGame().getReleasedPiston() == null) { // prevent nullpointer exception
                 return;
             }
-           
+
             if (GameHandler.getGame().getReleasedPiston().equals(linkedComponent)) { // if the correct piston has been pressed down
-                PistonMechanic.correctPistonPressed(ComponentSound.values()[linkedComponentIndex]);
+                PistonMechanic.correctPistonPressed(ComponentSound.values()[linkedComponentIndex]); // calls a function on correct piston
             }
 
         }

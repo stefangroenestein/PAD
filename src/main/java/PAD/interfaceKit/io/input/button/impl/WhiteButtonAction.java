@@ -10,8 +10,9 @@ import PAD.sound.Sound;
 import PAD.sound.Speaker;
 
 /**
- *
- * @author Admin
+ * The white button which doesn't exist anymore :/
+ * 
+ * @author Youri Dudock
  */
 public class WhiteButtonAction implements ComponentAction {
 

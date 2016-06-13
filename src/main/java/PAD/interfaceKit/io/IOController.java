@@ -5,10 +5,8 @@
  */
 package PAD.interfaceKit.io;
 
-import PAD.interfaceKit.component.ComponentHandler;
 import PAD.interfaceKit.io.output.OutputHandler;
 import PAD.interfaceKit.io.input.InputHandler;
-import PAD.interfaceKit.io.input.button.ButtonComponent;
 
 /**
  * Channels the input and output to the right handlers

@@ -11,26 +11,26 @@ import PAD.main.task.Task;
 /**
  * A task for timers to count up
  *
- * @author Youri
+ * @author Youri Dudock
  */
 public class TimerTask extends Task {
-    
+
     private Timer timer; // instance of a timer that belongs with this task
-    
+
     public TimerTask(Timer timer, int executeTimer) {
         super(executeTimer);
-        
+
         this.timer = timer;
     }
 
     @Override
     public boolean isOneTimeExecution() {
-        return false;
+        return false; // false so this task doesn't deactivate after executing
     }
 
     @Override
     public void onExecute() {
         timer.increase(); // increases the timer
     }
-    
+
 }

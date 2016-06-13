@@ -11,34 +11,33 @@ package PAD.Main;
  * @author Youri Dudock
  */
 public class UserAccount {
-    
+
     private String name; // name of the user
-    
-    private HappinessMeter happinessMeter = new HappinessMeter();
-    
+
+    private HappinessMeter happinessMeter = new HappinessMeter(); // the happiness for this user
+
     /**
-     * 
+     *
      * @param name name of the user
      */
     public UserAccount(String name) {
         this.name = name;
     }
-    
+
     /**
-     * 
+     *
      * @return the happiness meter
      */
     public HappinessMeter getMeter() {
         return happinessMeter;
     }
-    
+
     /**
-     * 
+     *
      * @return the name of the user
      */
     public String getName() {
         return name;
     }
-    
-    
+
 }

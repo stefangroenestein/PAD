@@ -5,11 +5,11 @@
  */
 package PAD.interfaceKit.io.output.LED;
 
-import PAD.interfaceKit.component.Component;
-
 /**
+ * Contains configs for led colors
+ * creates different colors by mixing booleans
  *
- * @author Roosie
+ * @author Bobbie
  */
 public enum LedColor {
     
@@ -20,28 +20,38 @@ public enum LedColor {
     YELLOW(false, false, true),
     CYAN(true, false, false);
     
-    private boolean LedColorRed; // name of the file
-    private boolean LedColorGreen; // name of the file
-    private boolean LedColorBlue; // name of the file
+    private boolean ledColorRed; // the red color
+    private boolean ledColorGreen; // the green color
+    private boolean ledColorBlue; // the blue color
 
     private LedColor(boolean LedColorRed, boolean LedColorGreen, boolean LedColorBlue) {
-        this.LedColorRed = LedColorRed;
-        this.LedColorGreen = LedColorGreen;
-        this.LedColorBlue = LedColorBlue;
+        this.ledColorRed = LedColorRed;
+        this.ledColorGreen = LedColorGreen;
+        this.ledColorBlue = LedColorBlue;
     }
 
+    /**
+     * 
+     * @return the red color
+     */
     public boolean getColorRed() {
-        return LedColorRed;
+        return ledColorRed;
     }
 
-
+    /**
+     * 
+     * @return the green color
+     */
     public boolean getColorGreen() {
-        return LedColorGreen;
+        return ledColorGreen;
     }
 
-
+    /**
+     * 
+     * @return the blue color
+     */
     public boolean getColorBlue() {
-        return LedColorBlue;
+        return ledColorBlue;
     }
     
 }

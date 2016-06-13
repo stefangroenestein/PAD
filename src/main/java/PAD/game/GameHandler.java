@@ -7,11 +7,8 @@ package PAD.game;
 
 import PAD.main.debug.Debugger;
 import PAD.game.mechanic.PistonMechanic;
-import PAD.interfaceKit.component.Component;
 import PAD.interfaceKit.component.ComponentHandler;
 import PAD.interfaceKit.io.output.LED.LedColor;
-import PAD.sound.Sound;
-import PAD.sound.Speaker;
 
 /**
  * Handles a game and works as a base class for actual game modes
@@ -21,7 +18,7 @@ import PAD.sound.Speaker;
 public abstract class GameHandler {
 
     private static Game game = new Game(); // a game, static because their can only exists one and we need the game to be global
-    
+
     /**
      * Starts a new game
      *
@@ -46,42 +43,42 @@ public abstract class GameHandler {
 
         game.setStage(GameStage.WAITING_FOR_PISTON); // sets the game in the next game stage
     }
-    
+
     /**
      * Proceses the game, this gets called every tick
      */
     public static void process() {
-        
+
         switch (game.getStage()) {
-            
+
             case WAITING_FOR_PISTON: // if the game is waiting for the pistons to be pressed down
                 if (PistonMechanic.arePistonsDown()) { // if all the pistons are down
 
                     game.getTimer().start(); // starts the timer
 
                     PistonMechanic.releasePiston(ComponentHandler.getRandomLinkedComponent()); // released a random piston
-                                          
+
                     game.setStage(GameStage.RUNNING); // sets the stage to running
                 } else {
                     Debugger.write("Waiting for the pistons to be pressed down..");
                 }
                 break;
-                
+
             case RUNNING:
-                if (GameHandler.getGame().getReleasedPiston() != null) {
+                if (GameHandler.getGame().getReleasedPiston() != null) { // for debug
                     Debugger.write("Expecting piston: " + GameHandler.getGame().getReleasedPiston().getPressurePlate());
-                    
+
                 }
 
-                if (game.getMode().isTimed()) {
+                if (game.getMode().isTimed()) { // if the mode is timed
 
-                    if (game.getTimer().getSeconds() >= game.getMode().getHandler().getGameLength()) {
+                    if (game.getTimer().getSeconds() >= game.getMode().getHandler().getGameLength()) { // checks if the game should stop
                         stopGame();
                     }
 
                 }
 
-                game.getMode().getHandler().onTick();
+                game.getMode().getHandler().onTick(); // calls a function in the sub game mode classes every tick
                 break;
 
         }
@@ -95,10 +92,10 @@ public abstract class GameHandler {
         game.setStage(GameStage.FINISHED); // sets the stage to finished
 
         game.getTimer().stop(); // stops the timer
-        
-        ComponentHandler.getLed().turnOn(LedColor.RED);
-        
-        ComponentHandler.getMagnet().setMagnets(false);
+
+        ComponentHandler.getLed().turnOn(LedColor.RED); // turn on the red lights
+
+        ComponentHandler.getMagnet().setMagnets(false); // turn the magnets off
 
         Debugger.write("Game has finished! Points: " + game.getPoints() + " Time played: " + game.getTimer().getSeconds() + " seconds");
     }
@@ -115,12 +112,12 @@ public abstract class GameHandler {
     public void onCorrectPistonDownHook() {
         game.increasePoints(); // increases the points
     }
-    
+
     /**
      * This gets called when the wrong piston has been pressed down in the game
      */
     public void onWrongPistonPressedHook() {
-        
+
     }
 
     /**
@@ -140,5 +137,5 @@ public abstract class GameHandler {
     public static Game getGame() {
         return game;
     }
-   
+
 }

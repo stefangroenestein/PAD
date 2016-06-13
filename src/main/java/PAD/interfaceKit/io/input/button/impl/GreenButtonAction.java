@@ -5,12 +5,11 @@
  */
 package PAD.interfaceKit.io.input.button.impl;
 
-import PAD.game.GameHandler;
-import PAD.game.GameMode;
 import PAD.interfaceKit.component.ComponentAction;
 
 /**
- *
+ * The green button which doesn't exist anymore..
+ * 
  * @author Youri Dudock
  */
 public class GreenButtonAction implements ComponentAction {
@@ -18,8 +17,6 @@ public class GreenButtonAction implements ComponentAction {
     @Override
     public void trigger() {
         System.out.println("You have pressed the green button.");
-        
-        GameHandler.startGame(GameMode.NORMAL);
     }
     
 }

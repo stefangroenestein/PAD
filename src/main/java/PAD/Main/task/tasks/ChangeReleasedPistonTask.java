@@ -7,17 +7,17 @@ package PAD.main.task.tasks;
 
 import PAD.main.debug.Debugger;
 import PAD.game.GameHandler;
-import PAD.interfaceKit.component.ComponentHandler;
 import PAD.interfaceKit.component.LinkedComponent;
 import PAD.main.task.Task;
 
 /**
+ * Changes the ingame registerd released piston
  *
- * @author Youri
+ * @author Youri Dudock
  */
 public class ChangeReleasedPistonTask extends Task {
     
-    private LinkedComponent linkedComponent;
+    private LinkedComponent linkedComponent; // the linked component which should become the new release piston
 
     public ChangeReleasedPistonTask(LinkedComponent linkedComponent, int executeTimer) {     
         super(executeTimer);
@@ -29,7 +29,8 @@ public class ChangeReleasedPistonTask extends Task {
     @Override
     public void onExecute() {
         Debugger.write("Changing the released piston to ("+linkedComponent.name()+")");
-        GameHandler.getGame().setReleasedPiston(linkedComponent); 
+        
+        GameHandler.getGame().setReleasedPiston(linkedComponent); // sets the new released piston
     }
     
     @Override

@@ -5,7 +5,6 @@
  */
 package PAD.main;
 
-import PAD.GUI.Highscore;
 import PAD.GUI.InterfaceHandler;
 import PAD.GUI.InterfaceName;
 
@@ -17,43 +16,49 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
-import javafx.collections.ObservableList;
 import javafx.stage.Stage;
 
 /**
+ * The main class of this application, this class starts everything
  *
  * @author Youri Dudock
  * @author <Stefan Groenestein, IT102, 500726588>
+ * @author Max
+ * @author Bobbie
  */
 public class Main extends Application {
 
-    private static final String dbHost = "localhost";   //select host name
-    private static final String dbTable = "pad_sss02"; //db schema name
-    private static final String dbUser = "root";        // db username
-    private static final String dbPassword = "root"; // db password
+    private static final String dbHost = "localhost";   // the databass host
+    private static final String dbTable = "pad_sss02"; // the name of the table we are selecting
+    private static final String dbUser = "root";        // the database username
+    private static final String dbPassword = "root"; // the database password
 
-    public static Connection connection;
+    public static Connection connection; // the database connection
 
-    public static Controller controller = new Controller();
+    public static Controller controller = new Controller(); // the controller for this application
+
+    /**
+     * The main function of this application
+     *
+     * @param args
+     * @throws Exception
+     */
+    public static void main(String[] args) throws Exception {
+        initializeDB(); // inits the database
+
+        KitConnector.initialize(); // connects the interface kit
+
+        launch(args); // launches the interface
+    }
 
     @Override
     public void start(Stage stage) throws IOException {
-
-        InterfaceHandler.open(InterfaceName.MAIN);
-
+        InterfaceHandler.open(InterfaceName.MAIN); // opens the main interface
     }
 
     /**
-     * @param args the command line arguments
-     * @throws java.lang.Exception
+     * Connects with the database
      */
-    public static void main(String[] args) throws Exception {
-        initializeDB();
-
-        KitConnector.initialize();
-        launch(args);
-    }
-
     public static void initializeDB() {
         try {
             // Load the JDBC driver

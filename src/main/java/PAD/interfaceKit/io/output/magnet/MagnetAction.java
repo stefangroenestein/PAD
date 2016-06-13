@@ -8,6 +8,7 @@ package PAD.interfaceKit.io.output.magnet;
 import PAD.interfaceKit.component.ComponentAction;
 
 /**
+ * A action which is being triggered after the change of a magnet state
  *
  * @author Youri Dudock
  */
@@ -15,7 +16,7 @@ public class MagnetAction implements ComponentAction {
 
     @Override
     public void trigger() {
-        // a trigger after the magnet has been turned on/off
+        
     }
     
 }

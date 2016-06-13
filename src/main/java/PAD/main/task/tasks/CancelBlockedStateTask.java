@@ -10,6 +10,7 @@ import PAD.game.mechanic.PistonMechanic;
 import PAD.main.task.Task;
 
 /**
+ * Exits the blocked state that prevents pressure plates from reading input
  *
  * @author Youri Dudock
  */
@@ -22,7 +23,8 @@ public class CancelBlockedStateTask extends Task {
     @Override
     public void onExecute() {
         Debugger.write("Exit the blocked state in task");
-        PistonMechanic.setReleaseBlocked(false);
+        
+        PistonMechanic.setReleaseBlocked(false); // turns the blocked state off
     }
 
     @Override

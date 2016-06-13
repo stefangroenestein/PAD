@@ -18,7 +18,6 @@ import PAD.interfaceKit.component.ComponentHandler;
 public class MagnetComponent extends ComponentHandler {
 
     private final String MAGNET_PREFIX = "MAGNET_"; // the identifier to find the magnets in the component enum
-    
 
     /**
      * Sets the state of all the magnets in the game
@@ -29,24 +28,22 @@ public class MagnetComponent extends ComponentHandler {
         for (Component magnet : getComponents()) {
             ComponentHandler.setState(magnet, state);
         }
-        
+
         Debugger.write("Turning all the magnets to state: " + state);
     }
-    
+
     /**
      * Gets a random magnet from our list
-     * 
+     *
      * @return a magnet component
      */
     public Component getRandomMagnet() {
         return getComponents().get(RandomUtil.getRandomInt(getComponents().size()));
     }
-    
+
     @Override
     public String getPrefix() {
         return MAGNET_PREFIX;
     }
-    
-    
 
 }

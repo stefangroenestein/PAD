@@ -8,13 +8,13 @@ package PAD.game.handlers;
 import PAD.game.GameHandler;
 
 /**
- * The handling of a timed game mode
+ * The handler of a timed game mode
  *
- * @author Youri
+ * @author Youri Dudock
  */
 public class TimedGameHandler extends GameHandler {
     
-    private final int GAME_TIME = 30;
+    private final int GAME_TIME = 30; // the amount of time this game takes
 
     @Override
     public void onTick() {

@@ -13,7 +13,7 @@ import PAD.main.task.TaskManager;
 /**
  * A timer that counts seconds using a task
  *
- * @author Youri
+ * @author Youri Dudock
  */
 public class Timer {
     

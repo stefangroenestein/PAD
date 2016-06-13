@@ -12,14 +12,15 @@ import PAD.interfaceKit.component.ComponentHandler;
 import PAD.main.task.Task;
 
 /**
+ * Changes the state of a magnet
  *
  * @author Youri Dudock
  */
 public class ChangeMagnetStateTask extends Task {
     
-    private boolean state;
+    private boolean state; // the new state
     
-    private Component magnet;
+    private Component magnet; // the magnet component
 
     public ChangeMagnetStateTask(Component magnet, boolean state, int executeTimer) {     
         super(executeTimer);
@@ -31,8 +32,7 @@ public class ChangeMagnetStateTask extends Task {
     
     @Override
     public void onExecute() {
-        Debugger.write("Changing the magnet state ("+magnet.name()+") to "+state);
-        ComponentHandler.setState(magnet, state);
+        ComponentHandler.setState(magnet, state); // sets the magnet is state
     }
     
     @Override
